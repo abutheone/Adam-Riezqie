@@ -28,7 +28,7 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
   ```
   nmap -sV -p 21,23,22,80 [target-ip]
   ```
-  ![image](https://github.com/user-attachments/assets/2c34570b-4073-4b21-82e7-e24b5da34909)
+  ![image](nmap-scan-open-port-on-target-machine.png)
 
 - Connected manually to Telnet to observe any information:
   ```
