@@ -34,7 +34,7 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
   ```
   telnet [target-ip]
   ```
-  ![image](https://github.com/user-attachments/assets/3c80d78e-9904-4c9d-a4ab-e29bcb667df0)
+  ![image](telnet-to-target-machine.png)
   > Here we got the username and password: ```msfadmin:msfadmin```. Bear in mind, we often do not get the credentials as easily as this.
 
 
@@ -46,13 +46,13 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
   ```
   hydra -L rockyou.txt -P rockyou.txt ftp://[target-ip]
   ```
-  ![image](https://github.com/user-attachments/assets/136b15fc-d644-4f87-b0c3-ba123adb8c57)
+  ![image](hydra-bruteforce-ftp.png)
   
 - TELNET
   ```
   hydra -L rockyou.txt -P rockyou.txt telnet://[target-ip]
   ```
-  ![image](https://github.com/user-attachments/assets/5ba8dca6-6fd2-48b3-86a8-adedb3d78b46)
+  ![image](hydra-bruteforce-telnet.png)
 
 
 
