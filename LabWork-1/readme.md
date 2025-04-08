@@ -5,13 +5,13 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 
 ---
 
-## 🛠️ Tools Used
+## 🛠️ Requirement
 
 - Kali Linux       (Attacker)
 - Metasploitable 2 (Target machine)
+- Wordlist          (rockyou.txt with "msfadmin")
 - Nmap
 - Hydra
-
 ---
 
 ## 🔍 Lab Tasks
