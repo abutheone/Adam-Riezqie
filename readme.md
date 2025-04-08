@@ -10,5 +10,5 @@ This repo (may 🤞) includes:
 - 🛠️ Custom-built tools and scripts using Python
 - 📖 Well-documented code for learning and showcasing purposes
 
-##Labwork
-[LabWork-1 README](LabWork-1/readme.md)
+## Labwork
+- [LabWork-1 README](LabWork-1/readme.md)
