@@ -10,6 +10,7 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 - Kali Linux
 - Metasploitable 2
 - Nmap
+- Hydra
 
 ---
 
@@ -24,17 +25,34 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 #### 🔧 Steps Taken:
 
 - Performed a port scan using Nmap:
-  ```nmap -sV -p 21,23,22,80 [target-ip]```
-![image](https://github.com/user-attachments/assets/2c34570b-4073-4b21-82e7-e24b5da34909)
+  ```
+  nmap -sV -p 21,23,22,80 [target-ip]
+  ```
+  ![image](https://github.com/user-attachments/assets/2c34570b-4073-4b21-82e7-e24b5da34909)
 
-- Connected manually to services like FTP and Telnet to observe any banner or prompt information:
-```
-ftp [target-ip]
-telnet [target-ip]
-```
-![image](https://github.com/user-attachments/assets/3c80d78e-9904-4c9d-a4ab-e29bcb667df0)
-> Here we got username and password is ```msfadmin:msfadmin```. Bare in mind, often we not get the password as easy as this.
+- Connected manually to Telnet to observe any information:
+  ```
+  telnet [target-ip]
+  ```
+  ![image](https://github.com/user-attachments/assets/3c80d78e-9904-4c9d-a4ab-e29bcb667df0)
+  > Here we got username and password is ```msfadmin:msfadmin```. Bare in mind, often we not get the credential as easy as this.
 
 
 ---
 ### 2.  Perform Brute Force Attacks
+#### 2.1. FTP, TELNET, and SSH
+- Use Hydra perform brute force attacks against the following protocols:
+- FTP
+  ```
+  hydra -L rockyou.txt -P rockyou.txt ftp://[target-ip]
+  ```
+  ![image](https://github.com/user-attachments/assets/136b15fc-d644-4f87-b0c3-ba123adb8c57)
+  
+- TELNET
+  ```
+  hydra -L rockyou.txt -P rockyou.txt telnet://[target-ip]
+  ```
+  ![image](https://github.com/user-attachments/assets/5ba8dca6-6fd2-48b3-86a8-adedb3d78b46)
+
+
+
