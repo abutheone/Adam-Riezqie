@@ -7,8 +7,8 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 
 ## 🛠️ Tools Used
 
-- Kali Linux
-- Metasploitable 2
+- Kali Linux       (Attacker)
+- Metasploitable 2 (Target machine)
 - Nmap
 - Hydra
 
