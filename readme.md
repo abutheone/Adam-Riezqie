@@ -9,3 +9,6 @@ This repo (may 🤞) includes:
 - 🔍 Demonstrations of encryption and decryption processes
 - 🛠️ Custom-built tools and scripts using Python
 - 📖 Well-documented code for learning and showcasing purposes
+
+##Labwork
+[LabWork-1 README](LabWork-1/readme.md)
