@@ -35,7 +35,7 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
   telnet [target-ip]
   ```
   ![image](https://github.com/user-attachments/assets/3c80d78e-9904-4c9d-a4ab-e29bcb667df0)
-  > Here we got username and password is ```msfadmin:msfadmin```. Bare in mind, often we not get the credential as easy as this.
+  > Here we got the username and password: ```msfadmin:msfadmin```. Bear in mind, we often do not get the credentials as easily as this.
 
 
 ---
