@@ -11,4 +11,4 @@ This repo (may 🤞) includes:
 - 📖 Well-documented code for learning and showcasing purposes
 
 ## Labwork
-- [LabWork-1 README](LabWork-1/readme.md)
+- [Lab 1: Cryptographic Attacks: Brute Force and Traffic Analysis on Network Protocols](LabWork-1/readme.md)
