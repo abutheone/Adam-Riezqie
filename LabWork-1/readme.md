@@ -57,5 +57,24 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
   ```
   ![image](hydra-bruteforce-telnet.png)
 
+#### 2.2. HTTP
+> Since we know the target machine has port 80 open. We can use web browser to open it
+![Screenshot 2025-04-08 190606](https://github.com/user-attachments/assets/852e982a-d46c-4da3-bd67-92e6ce375391)
 
+- Here we got DVWA for testing
+![image](https://github.com/user-attachments/assets/5af3a29e-51f3-4e4f-a8b7-59ff94b26aa9)
 
+- Capure login form using BurpSuite
+![image](https://github.com/user-attachments/assets/c129ff7a-a8e4-4ebc-bf20-d9a66da853de)
+
+- Right click and send to intruder
+![image](https://github.com/user-attachments/assets/7477905c-d3cf-4bc9-9e37-5a182966023d)
+
+- Right click hightlight entered username and password and click on add payload position
+![image](https://github.com/user-attachments/assets/7bea2c54-ae5b-4701-b75f-9d72c36e14dc)
+
+- Load payload wordlist
+![image](https://github.com/user-attachments/assets/298608c5-29ae-427e-80b9-88fc7828fed3)
+
+- CLick Start Attack
+![image](https://github.com/user-attachments/assets/d4fa653c-1d25-4956-9554-a6ec3ef77a9e)
