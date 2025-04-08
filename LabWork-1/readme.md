@@ -9,7 +9,7 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 
 - Kali Linux       (Attacker)
 - Metasploitable 2 (Target machine)
-- Wordlist          (rockyou.txt with "msfadmin")
+- Wordlist         (rockyou.txt with "msfadmin" word innit)
 - Nmap
 - Hydra
 ---
