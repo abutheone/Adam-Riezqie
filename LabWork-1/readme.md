@@ -41,7 +41,11 @@ The goal of this lab is to explore the vulnerabilities of common network protoco
 ---
 ### 2.  Perform Brute Force Attacks
 #### 2.1. FTP, TELNET, and SSH
+
+#### ✅ Objective:
 - Use Hydra perform brute force attacks against the following protocols:
+
+#### 🔧 Steps Taken:  
 - FTP
   ```
   hydra -L rockyou.txt -P rockyou.txt ftp://[target-ip]
