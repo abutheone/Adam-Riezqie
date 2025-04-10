@@ -1,36 +1,51 @@
 # Lab 1: Cryptographic Attacks: Brute Force and Traffic Analysis on Network Protocols
 
 ## 🎯 Objective
-The goal of this lab is to explore the vulnerabilities of common network protocols (FTP, TELNET, SSH, HTTP) by performing brute force attacks to recover passwords and then using those credentials to sniff network traffic. Will also analyze the security of these protocols and propose mitigation strategies.
 
+1. Explore **vulnerabilities** in common network protocols (FTP, TELNET, SSH & HTTP).
+3. Perform brute force attacks to recover passwords.
+4. Use recovered credentials to sniff network traffic.
+5. Analyze the security posture of each protocol.
+6. Propose effective mitigation strategies.
 ---
 
 ## 🛠️ Requirement
 
-- Kali Linux       (Attacker)
-- Metasploitable 2 (Target machine)
-- Wordlist         (rockyou.txt with "msfadmin" word innit)
-- Nmap
-- Hydra
+| Tool               | Purpose                        |
+|--------------------|--------------------------------|
+| Kali Linux         | Attacker machine               |
+| Metasploitable 2   | Target/vulnerable machine      |
+| Wordlist           | Password brute-forcing         |
+| Nmap               | Port scanning                  |
+| Hydra              | Brute force tool               |
+| Burp Suite         | HTTP interception & testing    |
 ---
 
 ## 🔍 Lab Tasks
 
-### 1. Enumerate the Vulnerable VM to Discover Usernames
+### Task 1: Enumerate the Vulnerable VM to Discover Usernames
 
 #### ✅ Objective:
 - Identify potential usernames for brute force attacks.
-- Document the usernames found.
 
-#### 🔧 Steps Taken:
+#### 🚶‍♂️‍➡️ The Process:
 
-- Performed a port scan using Nmap:
-  ```
-  nmap -sV -p 21,23,22,80 [target-ip]
-  ```
-  ![image](nmap-scan-open-port-on-target-machine.png)
+1. Performed a port scan using Nmap:
+   
+    ```
+    nmap -sV -p 21,23,22,80 [target-ip]
+    ```
+    | Option              | Meaning                                                                                                                                       |
+   |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+   | `nmap`              | Runs the Nmap network scanner tool.                                                                                                           |
+   | `-sV`               | **Service/version detection** — Nmap will try to determine what software and version is running on each open port.                          |
+   | `-p 21,23,22,80`    | Tells Nmap to scan **only** these specific ports: <br>• `21` = FTP <br>• `23` = Telnet <br>• `22` = SSH <br>• `80` = HTTP                    |
+   | `[target-ip]`       | Replace with the IP address of the target/vulnerable machine you are scanning.
 
-- Connected manually to Telnet to observe any information:
+   ![image](nmap-scan-open-port-on-target-machine.png)
+   > Here I only scan FTP(21), TELNET(23), SSH(22) and HTTP(80) port.
+
+3. Connected manually to Telnet to observe any information:
   ```
   telnet [target-ip]
   ```
