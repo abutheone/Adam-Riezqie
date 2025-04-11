@@ -108,7 +108,22 @@ Performed a port scan using Nmap:
         msfadmin
         user
       ```
-      > We execute the script and filter the output to extract lines containing username:. Then, we strip the username: prefix and save the resulting usernames to a file named list.username.txt.
+      > Here I execute the script and filter the output to extract lines containing username:. Then, I strip the username: prefix and save the resulting usernames to a file named list.username.txt.
+      
+      **Potential usernames for brute force attacks:**
+         ```
+            root
+            ftp
+            postgres
+            mysql
+            tomcat55
+            proftpd
+            msfadmin
+            user
+         ```
 
+---
 
-       
+### Task 2: Perform Brute Force Attacks
+#### 2.1: FTP, TELNET, and SSH
+     
