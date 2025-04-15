@@ -147,7 +147,7 @@
      > but how to get the password?
      
         - There is many list online out there, but for this task we utilized ChatGPT for generate potential password based on the username:
-          - [Password.txt](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-1/password.txt)
+          - [Password.txt](password.txt)
 
 
 
