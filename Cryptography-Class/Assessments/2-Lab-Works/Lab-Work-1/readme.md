@@ -184,6 +184,50 @@ For do brute force attack, I use Hydra:
    1. Use Burp Intruder to automate brute force attacks against an HTTP login page.
    2. Configure Intruder to test a list of usernames and passwords.
    3. Analyze the results to identify successful logins.
+
+   #### 🚶‍♂️‍➡️ The Process:
+
+   1. Login to DVWA (D*** Vulnerable Web App!)
+      - Login from attacker device:
+         ![Image](assets/DVWA-login-page.png)
+
+   2. Our Testing Page
+      - Send a placeholder in login form:
+         ![Image](assets/DVWA-Bruteforce-page.png)
+         > make sure you enable the intercept in Burp Suite 
+
+   3. Intercept Request
+      - Right click and send to Intruder for bruteforce
+         ![Image](assets/burp-suite-intercept-request.png)
+
+   4. Select Attack Type:
+      - Choose Cluster Bomb Attack:
+         ![Image](assets/select-attack-type.png)
+
+   5. Setting up Payload:
+      - Select potential-username.txt as a first payload for username:
+         ![Image](assets/payload-1.png)
+
+      - Select password.txt as a second payload for password:
+         ![Image](assets/payload-2.png)
+
+   6. Analyze the results to identify successful logins:
+      - Click the lenght column for sort it:
+         ![Image](assets/burp-suite-sort-index.png)
+         > We can see here payload "admin" "password" with most lenght
+
+      - Open the respone tab:
+         ![Image](assets/burp-suite-sort-index.png)
+         > As we can see here, we have successful attempt
+
+   7. Login as admin:
+      - Go back to the login form and try login:
+         ![Image](assets/brute-force-successful.png)
+         > Nice job buddy!
+
+   
+
+
 ---
 
 
