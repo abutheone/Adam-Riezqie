@@ -37,7 +37,7 @@ Performed a port scan using Nmap:
    | `[target-ip]`       | Replace with the IP address of the target/vulnerable machine you are scanning.                                     |
 
    - Result:
-     ![image](https://github.com/user-attachments/assets/901e865f-eb77-4f8e-9f43-42515ba29026)
+     ![image](nmap-result.png)
      > Here I only scan FTP(21), TELNET(23), SSH(22) and HTTP(80) port.
 ---
 
