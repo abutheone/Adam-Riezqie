@@ -144,12 +144,22 @@
         - potential-username.txt
         - password.txt
 
-     > but how to get the password?
-     
-        - There is many list online out there, but for this task we utilized ChatGPT for generate potential password based on the username:
-          - [Password.txt](password.txt)
+   - but how to get the password? There is many list online out there, but for this task we utilized ChatGPT for generate potential password based on the username:
+        - [Password.txt](password.txt)
 
-
+   ---
 
 #### 2.1: FTP, TELNET, and SSH
+
+##### FTP:
+
+   ---
+   
+##### TELNET:
+
+   ---
+   
+##### SSH:
+
+   ---
      
