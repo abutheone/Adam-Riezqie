@@ -11,17 +11,18 @@
 
 ## 🛠️ Requirement
 
-| Tool               | Purpose                        |
-|--------------------|--------------------------------|
-| Kali Linux         | Attacker machine               |
-| Metasploitable 2   | Target/vulnerable machine      |
-| Burp Suite         | HTTP interception & testing    |
-| Python3            |                                |
-| Wordlist           | Password brute-forcing         |
-| Nmap               | Port scanning                  |
-| Hydra              | Brute force tool               |
-| enum4linux-ng      |                                |
-| NetExec            |                                |
+| Tool              | Purpose                                 |
+|-------------------|------------------------------------------|
+| Kali Linux        | Attacker machine                         |
+| Metasploitable 2  | Target/vulnerable machine                |
+| Burp Suite        | HTTP interception & testing              |
+| Python3           | Running scripts and tools (e.g., enum4linux-ng) |
+| Wordlist          | Password brute-forcing                   |
+| Nmap              | Port scanning                            |
+| Hydra             | Brute force tool for multiple protocols  |
+| enum4linux-ng     | Username enumeration on SMB shares       |
+| NetExec           | Automated exploitation and brute forcing for various services (e.g., SSH, SMB) |
+
 
 ---
 
