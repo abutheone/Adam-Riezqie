@@ -226,9 +226,22 @@ For do brute force attack, I use Hydra:
          > Nice job buddy!
 
    
-
-
 ---
+
+### Task 3: Sniff Network Traffic
+
+## 🎯 Objective
+
+1. Use the recovered credentials to log in to the respective services.
+2. Use Wireshark or tcpdump to capture and analyze network traffic during the session.
+3. Identify which protocols transmit data in plaintext and which use encryption.
+4. Provide evidence (e.g., screenshots) to prove which protocols are secure and which are not.
+
+   ---
+
+      #### 🚶‍♂️‍➡️ The Process:
+
+
 
 
 
