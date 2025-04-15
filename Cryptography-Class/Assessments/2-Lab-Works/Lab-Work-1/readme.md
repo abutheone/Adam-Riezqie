@@ -269,13 +269,36 @@ For do brute force attack on SSH , I used NetExec:
             - ![Image](assets/Wireshark-TELNET-plaintext.png)
                > Here we capture data that transmit using telnet, which is not encrypted.
 
-
-
-
-
       b. Identify Protocol trasnmit data using encryption:
 
 
 
+---
 
+### Task 4: Analyze Problems Encounter
 
+## ⁉️ Questions:
+
+1. Were there any issues during the brute force attacks (e.g., rate limiting, protocol-specific challenges)?
+   - Yes. Some services like SSH had rate limiting and connection delays.
+   - HTTP brute force using Burp Suite required careful payload setup and response analysis.
+   - TELNET and FTP didn’t have much protection and were easy to brute force.
+
+2. How did you resolve these issues?
+   - For SSH, used NetExec which handles slow login attempts better.
+   - For HTTP, used Burp Intruder’s Cluster Bomb to try combinations and sorted responses by length.
+   - Adjusted password and username lists to improve accuracy and speed.
+---
+
+### Task 5: Propose Mitigation Strategies
+
+## 🎯 Objective
+
+1. Propose a secure alternative for each protocol.
+2. Explain how these alternatives mitigate the vulnerabilities.
+
+   | 🔓 Vulnerable Protocol | 🔐 Secure Alternative | 🔧 How It Helps |
+   |-------------------------|------------------------|-----------------|
+   |FTP | FTPS / SFTP | Encrypts file transfer and login credentials |
+   |TELNET | SSH | Encrypts session, supports key-based login, protects against sniffing |
+   | HTTP | HTTPS | Encrypts web traffic, prevents credential leakage |
