@@ -249,25 +249,25 @@ For do brute force attack on SSH , I used NetExec:
 
    ---
 
-      #### 🚶‍♂️‍➡️ The Process:
+   #### 🚶‍♂️‍➡️ The Process:
       
-      a. Identify Protocol trasnmit data in plaintext:
+   a. Identify Protocol trasnmit data in plaintext:
 
-         1. Open Wireshark on Attack device (Kali Linux)
-         2. Choose eth0 (or channel that connect with metasploitable network)
-         3. Start the scan
-         4. Simulate the login attempt using real username:password we got for TELNET on Attacker Machine
-         5. Go back to Wireshark:
+      1. Open Wireshark on Attack device (Kali Linux)
+      2. Choose eth0 (or channel that connect with metasploitable network)
+      3. Start the scan
+      4. Simulate the login attempt using real username:password we got for TELNET on Attacker Machine
+      5. Go back to Wireshark:
 
-            - Result:
-               - ![Image](assets/Wireshark-Capture-TELNET.png)
+         - Result:
+            - ![Image](assets/Wireshark-Capture-TELNET.png)
 
-         6. Sort the lenght column.
-         7. Right click to the most lenght value > Follow > TCP Stream
+      6. Sort the lenght column.
+      7. Right click to the most lenght value > Follow > TCP Stream
 
-            - Result:
-               - ![Image](assets/Wireshark-TELNET-plaintext.png)
-                  > Here we capture data that transmit using telnet, which is not encrypted.
+         - Result:
+            - ![Image](assets/Wireshark-TELNET-plaintext.png)
+               > Here we capture data that transmit using telnet, which is not encrypted.
 
 
 
