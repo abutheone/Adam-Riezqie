@@ -15,12 +15,13 @@
 |--------------------|--------------------------------|
 | Kali Linux         | Attacker machine               |
 | Metasploitable 2   | Target/vulnerable machine      |
+| Burp Suite         | HTTP interception & testing    |
+| Python3            |                                |
 | Wordlist           | Password brute-forcing         |
 | Nmap               | Port scanning                  |
 | Hydra              | Brute force tool               |
-| Burp Suite         | HTTP interception & testing    |
 | enum4linux-ng      |                                |
-| Python3            |                                |
+| NetExec            |                                |
 
 ---
 
@@ -153,7 +154,7 @@
 
 ##### FTP:
 
-For do brute force attack, I use Hydra:
+For do brute force attack on FTP and TELNET , I used Hydra:
    ```
       hydra -L potential-username.txt -P password.txt ftp://[target-ip]
    ```
@@ -175,6 +176,15 @@ For do brute force attack, I use Hydra:
    
 ##### SSH:
 
+For do brute force attack on SSH , I used NetExec:
+   ```
+      nxc ssh [target-ip] -u potential-username.txt -p password.txt
+   ```
+
+   - Results:
+     ![Image](assets/NetExec-SSH-bruteforce.png)
+
+   ---
    ---
 
 #### 2.2: HTTP
