@@ -37,7 +37,7 @@
    | `[target-ip]`       | Replace with the IP address of the target/vulnerable machine you are scanning.                                     |
 
    - Result:
-     ![image](nmap-result.png)
+     ![image](assets/nmap-result.png)
      > Here I only scan FTP(21), TELNET(23), SSH(22) and HTTP(80) port.
 
 2. Create Python Virtual Enviroment:
@@ -145,13 +145,21 @@
         - password.txt
 
    - but how to get the password? There is many list online out there, but for this task we utilized ChatGPT for generate potential password based on the username:
-        - [Password.txt](password.txt)
+        - [Password.txt](wordlist/password.txt)
 
    ---
 
 #### 2.1: FTP, TELNET, and SSH
 
 ##### FTP:
+
+For do brute force attack, I use Hydra:
+   ```
+      hydra -L potential-username.txt -P password.txt ftp://[target-ip]
+   ```
+
+   - Results:
+     ![Image](assets/Hydra-bruteforce-FTP-result.png)
 
    ---
    
