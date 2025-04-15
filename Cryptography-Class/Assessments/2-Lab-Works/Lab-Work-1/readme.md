@@ -20,6 +20,8 @@
 | Hydra              | Brute force tool               |
 | Burp Suite         | HTTP interception & testing    |
 | enum4linux-ng      |                                |
+| Python3            |                                |
+
 ---
 
 ## 🔥 Pre-Heat
@@ -27,12 +29,12 @@ Performed a port scan using Nmap:
    ```
    nmap -sV -p 21,23,22,80 [target-ip]
    ```
-   | Option              | Meaning                                                                                                                                       |
-   |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-   | `nmap`              | Runs the Nmap network scanner tool.                                                                                                           |
-   | `-sV`               | **Service/version detection** — Nmap will try to determine what software and version is running on each open port.                          |
-   | `-p 21,23,22,80`    | Tells Nmap to scan **only** these specific ports: <br>• `21` = FTP <br>• `23` = Telnet <br>• `22` = SSH <br>• `80` = HTTP                    |
-   | `[target-ip]`       | Replace with the IP address of the target/vulnerable machine you are scanning.
+   | Option              | Meaning                                                                                                         |
+   |---------------------|-----------------------------------------------------------------------------------------------------------------|
+   | `nmap`              | Runs the Nmap network scanner tool.                                                                               |
+   | `-sV`               | **Service/version detection** — Nmap will try to determine what software and version is running on each open port.    |
+   | `-p 21,23,22,80`    | Tells Nmap to scan **only** these specific ports: <br>• `21` = FTP <br>• `23` = Telnet <br>• `22` = SSH <br>• `80` = HTTP    |
+   | `[target-ip]`       | Replace with the IP address of the target/vulnerable machine you are scanning.                                     |
 
    - Result:
      ![image](https://github.com/user-attachments/assets/901e865f-eb77-4f8e-9f43-42515ba29026)
