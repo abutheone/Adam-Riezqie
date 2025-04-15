@@ -169,7 +169,7 @@ For do brute force attack, I use Hydra:
       hydra -L potential-username.txt -P password.txt ftp://[target-ip]
    ```
    - Results:
-     ![Image](assets/Hydra-bruteforce-telnet-result.png)
+     ![Image](assets/Hydra-bruteforce-Telnet-result.png)
 
    ---
    
