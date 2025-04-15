@@ -270,10 +270,6 @@ For do brute force attack on SSH , I used NetExec:
             - ![Image](assets/Wireshark-TELNET-plaintext.png)
                > Here we capture data that transmit using telnet, which is not encrypted.
 
-      b. Identify Protocol trasnmit data using encryption:
-
-
-
 ---
 
 ### Task 4: Analyze Problems Encounter
