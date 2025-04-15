@@ -206,10 +206,10 @@ For do brute force attack, I use Hydra:
 
    5. Setting up Payload:
       - Select potential-username.txt as a first payload for username:
-         ![Image](assets/payload-1.png)
+      - ![Image](assets/payload-1.png)
 
       - Select password.txt as a second payload for password:
-         ![Image](assets/payload-2.png)
+      - ![Image](assets/payload-2.png)
 
    6. Analyze the results to identify successful logins:
       - Click the lenght column for sort it:
