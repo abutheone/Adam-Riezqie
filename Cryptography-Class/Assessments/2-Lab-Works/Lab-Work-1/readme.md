@@ -176,4 +176,15 @@ For do brute force attack, I use Hydra:
 ##### SSH:
 
    ---
-     
+
+#### 2.2: HTTP
+
+## 🎯 Objective
+
+   1. Use Burp Intruder to automate brute force attacks against an HTTP login page.
+   2. Configure Intruder to test a list of usernames and passwords.
+   3. Analyze the results to identify successful logins.
+---
+
+
+
