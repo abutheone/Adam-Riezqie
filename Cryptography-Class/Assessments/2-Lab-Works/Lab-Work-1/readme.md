@@ -25,7 +25,7 @@
 ---
 
 ## 🔥 Pre-Heat
-Performed a port scan using Nmap:
+1. Performed a port scan using Nmap:
    ```
    nmap -sV -p 21,23,22,80 [target-ip]
    ```
@@ -39,6 +39,18 @@ Performed a port scan using Nmap:
    - Result:
      ![image](nmap-result.png)
      > Here I only scan FTP(21), TELNET(23), SSH(22) and HTTP(80) port.
+
+2. Create Python Virtual Enviroment:
+   ```
+   python3 -m venv crypto-Venv
+   source crypto-Venv/bin/activate
+   ```
+3. Install enum4linux-ng:
+   ```
+      git clone https://github.com/cddmp/enum4linux-ng.git
+      cd enum4linux-ng
+      python3 -m pip install -r requirements.txt
+   ```
 ---
 
 ## 🔍 Lab Tasks
@@ -50,32 +62,27 @@ Performed a port scan using Nmap:
 ---
 
 #### 🚶‍♂️‍➡️ The Process:
-1. Create Python Virtual Environment:
+
+1. Enumurate Username Using Enum4linux-ng:
+
+   You may run this script like normal:
    ```
-   python3 -m venv crypto-Venv
-   source crypto-Venv/bin/activate
+   python3 enum4linux-ng.py -A [target-ip]
    ```
    
-2. Install enum4linux-ng:
+   But my version will grep username only and append to username.txt. Useful for brute force tasks: 
    ```
-      git clone https://github.com/cddmp/enum4linux-ng.git
-      cd enum4linux-ng
-      python3 -m pip install -r requirements.txt
+   python3 enum4linux-ng.py -A [target-ip] | grep "username:" | sed 's/username: //' >> username.txt
    ```
-   - Result:
-     ![image](https://github.com/user-attachments/assets/b104cbfa-c729-45ae-a366-f0ae84834952)
+   > Make sure run the script in enum4linux-ng directory   
 
-3. Run the script:
-   ```
-   python3 enum4linux-ng.py -A [target-ip] | grep "username:" | sed 's/username: //' >> list-username.txt
-   ```
    - Result:
       ```
-      ┌──(abu㉿kali)-[~/enum4linux-ng]
-      └─$ python3 enum4linux-ng.py -A 192.168.109.131 | grep "username:" | sed 's/username: //' >> list-username.txt
+      ┌──(crypto-Venv)─(adamriezqie㉿NWS23010043)-[~/enum4linux-ng]
+      └─$ python3 enum4linux-ng.py -A 192.168.109.131 | grep "username:" | sed 's/username: //' >> username.txt
 
-      ┌──(abu㉿kali)-[~/enum4linux-ng]
-      └─$ cat list-username.txt
+      ┌──(crypto-Venv)─(adamriezqie㉿NWS23010043)-[~/enum4linux-ng]
+      └─$ cat username.txt 
         root
         daemon
         bin
@@ -109,23 +116,105 @@ Performed a port scan using Nmap:
         proftpd
         msfadmin
         user
+        service
+        nobody
       ```
       > Here I execute the script and filter the output to extract lines containing username:. Then, I strip the username: prefix and save the resulting usernames to a file named list.username.txt.
       
       **Potential usernames for brute force attacks:**
-         ```
-            root
-            ftp
-            postgres
-            mysql
-            tomcat55
-            proftpd
-            msfadmin
-            user
-         ```
+     
+      ```
+      ┌──(crypto-Venv)─(adamriezqie㉿NWS23010043)-[~/enum4linux-ng]
+      └─$ cat potential-username.txt 
+      root
+      ftp
+      postgres
+      mysql
+      tomcat55
+      proftpd
+      msfadmin
+      user
+      ```
+      > Here, I narrowed down the list to potential usernames for brute force attacks. 
 
 ---
 
 ### Task 2: Perform Brute Force Attacks
+   - For brute force attaks we need a two things:
+        - potential-username.txt
+        - password.txt
+
+     > but how to get the password?
+        - There is many list online out there, but for this task we utilized ChatGPT for generate potential password based on the username:
+
+          ```
+            root
+            root123
+            root@123
+            root1
+            root2023
+            root2024
+            root2025
+            root!
+            toor
+            admin
+            ftp
+            ftp123
+            ftp@123
+            ftp1
+            ftp2023
+            ftp2024
+            ftp2025
+            ftp!
+            anonymous
+            postgres
+            postgres123
+            postgres@123
+            postgres1
+            postgres2023
+            postgres2024
+            postgres2025
+            postgres!
+            admin
+            pgadmin
+            mysql
+            mysql123
+            mysql@123
+            mysql1
+            mysql2023
+            mysql2024
+            mysql2025
+            mysql!
+            root
+            tomcat55
+            tomcat55@123
+            tomcat55!
+            tomcat
+            tomcat123
+            tomcatadmin
+            proftpd
+            proftpd123
+            proftpd@123
+            proftpd1
+            proftpd!
+            msfadmin
+            msfadmin123
+            msfadmin@123
+            msfadmin1
+            msfadmin!
+            user
+            user123
+            user@123
+            user1
+            user2023
+            user2024
+            user2025
+            user!
+            test
+            password
+          ```
+
+
+
 #### 2.1: FTP, TELNET, and SSH
      
