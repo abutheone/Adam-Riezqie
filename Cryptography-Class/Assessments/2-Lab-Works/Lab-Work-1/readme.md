@@ -17,7 +17,7 @@
 | Metasploitable 2  | Target/vulnerable machine                |
 | Burp Suite        | HTTP interception & testing              |
 | Python3           | Running scripts and tools (e.g., enum4linux-ng) |
-| Wordlist          | Password brute-forcing                   |
+| [Wordlist](wordlist)         | Password brute-forcing                   |
 | Nmap              | Port scanning                            |
 | Hydra             | Brute force tool for multiple protocols  |
 | enum4linux-ng     | Username enumeration on SMB shares       |
