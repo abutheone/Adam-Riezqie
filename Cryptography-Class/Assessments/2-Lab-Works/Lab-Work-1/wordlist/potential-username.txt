@@ -1,7 +1,0 @@
-root
-ftp
-msfadmin
-admin
-postgres
-mysql
-user
