@@ -17,7 +17,7 @@
 | Metasploitable 2  | Target/vulnerable machine                |
 | Burp Suite        | HTTP interception & testing              |
 | Python3           | Running scripts and tools (e.g., enum4linux-ng) |
-| [Wordlist](wordlist)         | Username and Password brute-forcing                   |
+| [Wordlist](assets/wordlist)         | Username and Password brute-forcing                   |
 | Nmap              | Port scanning                            |
 | Hydra             | Brute force tool for multiple protocols  |
 | enum4linux-ng     | Username enumeration on SMB shares       |
@@ -39,7 +39,7 @@
    | `[target-ip]`       | Replace with the IP address of the target/vulnerable machine you are scanning.                                     |
 
    - Result:
-     ![image](assets/nmap-result.png)
+     ![image](assets/screenshot/nmap-result.png)
      > Here I only scan FTP(21), TELNET(23), SSH(22) and HTTP(80) port.
 
 2. Create Python Virtual Enviroment:
@@ -146,7 +146,7 @@
         - password.txt
 
    - but how to get the password? There is many list online out there, but for this task we utilized ChatGPT for generate potential password based on the username:
-        - [Password.txt](wordlist/password.txt)
+        - [Password.txt](assets/wordlist/password.txt)
 
    ---
 
@@ -160,7 +160,7 @@ For do brute force attack on FTP and TELNET , I used Hydra:
    ```
 
    - Results:
-     ![Image](assets/Hydra-bruteforce-FTP-result.png)
+     ![Image](assets/screenshot/Hydra-bruteforce-FTP-result.png)
 
    ---
    
@@ -170,7 +170,7 @@ For do brute force attack on FTP and TELNET , I used Hydra:
       hydra -L potential-username.txt -P password.txt ftp://[target-ip]
    ```
    - Results:
-     ![Image](assets/Hydra-Bruteforce-Telnet-result.png)
+     ![Image](assets/screenshot/Hydra-Bruteforce-Telnet-result.png)
 
    ---
    
@@ -182,7 +182,7 @@ For do brute force attack on SSH , I used NetExec:
    ```
 
    - Results:
-     ![Image](assets/NetExec-SSH-bruteforce.png)
+     ![Image](assets/screenshot/NetExec-SSH-bruteforce.png)
 
    ---
    ---
@@ -199,40 +199,40 @@ For do brute force attack on SSH , I used NetExec:
 
    1. Login to DVWA (D*** Vulnerable Web App!)
       - Login from attacker device:
-         ![Image](assets/DVWA-login-page.png)
+         ![Image](assets/screenshot/DVWA-login-page.png)
 
    2. Our Testing Page
       - Send a placeholder in login form:
-         ![Image](assets/DVWA-Bruteforce-page.png)
+         ![Image](assets/screenshot//DVWA-Bruteforce-page.png)
          > make sure you enable the intercept in Burp Suite 
 
    3. Intercept Request
       - Right click and send to Intruder for bruteforce
-         ![Image](assets/burp-suite-intercept-request.png)
+         ![Image](assets/screenshot/burp-suite-intercept-request.png)
 
    4. Select Attack Type:
       - Choose Cluster Bomb Attack:
-         ![Image](assets/select-attack-type.png)
+         ![Image](assets/screenshot/select-attack-type.png)
 
    5. Setting up Payload:
       - Select potential-username.txt as a first payload for username:
-      - ![Image](assets/payload-1.png)
+      - ![Image](assets/screenshot/payload-1.png)
 
       - Select password.txt as a second payload for password:
-      - ![Image](assets/payload-2.png)
+      - ![Image](assets/screenshot/payload-2.png)
 
    6. Analyze the results to identify successful logins:
       - Click the lenght column for sort it:
-         ![Image](assets/burp-suite-sort-index.png)
+         ![Image](assets/screenshot/burp-suite-sort-index.png)
          > We can see here payload "admin" "password" with most lenght
 
       - Open the respone tab:
-         ![Image](assets/burp-suite-sort-index.png)
+         ![Image](assets/screenshot/burp-suite-sort-index.png)
          > As we can see here, we have successful attempt
 
    7. Login as admin:
       - Go back to the login form and try login:
-         ![Image](assets/brute-force-successful.png)
+         ![Image](assets/screenshot/brute-force-successful.png)
          > Nice job buddy!
 
    
@@ -260,13 +260,13 @@ For do brute force attack on SSH , I used NetExec:
       5. Go back to Wireshark:
 
          - Result:
-            - ![Image](assets/Wireshark-Capture-TELNET.png)
+            - ![Image](assets/screenshot/Wireshark-Capture-TELNET.png)
 
       6. Sort the lenght column.
       7. Right click to the most lenght value > Follow > TCP Stream
 
          - Result:
-            - ![Image](assets/Wireshark-TELNET-plaintext.png)
+            - ![Image](assets/screenshot/Wireshark-TELNET-plaintext.png)
                > Here we capture data that transmit using telnet, which is not encrypted.
 
 ---
