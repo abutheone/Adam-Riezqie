@@ -130,11 +130,10 @@
       └─$ cat potential-username.txt 
       root
       ftp
+      msfadmin
+      admin
       postgres
       mysql
-      tomcat55
-      proftpd
-      msfadmin
       user
       ```
       > Here, I narrowed down the list to potential usernames for brute force attacks. 
