@@ -1,7 +1,5 @@
 # 🔐 Cryptography Class Projects
 
-HI syed
-
 Welcome to my Cryptography Class repository! This is where I share the practical projects, assignments, and experiments I've completed as part of my cryptography coursework.
 
 ## 📚 About This Repository
