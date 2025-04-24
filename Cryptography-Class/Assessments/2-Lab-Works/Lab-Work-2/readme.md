@@ -46,7 +46,7 @@
 
 
 2. **Connect to the Database:**
-   - Attempted to connect to the MySQL and PostgreSQL targets using [common database username](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-sernames):
+   - Attempted to connect to the MySQL and PostgreSQL targets using [common database username](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-usernames):
      - **MySQL:**
 
        ```sh
@@ -63,7 +63,7 @@
      - **PostgreSQL:**
 
        ```sh
-       psql -h <targe-ip> -p 5432 -U <username> -W
+       psql -h <targe-ip> -p 5432 -U <username>
        ```
 
        ```sh
@@ -236,8 +236,7 @@
      +------+------------------+----------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--
      3 rows in set (0.001 sec) 
      ```
-     > If only I have ultra wide monitor 🥲. Jk, see below...
-
+     
      ```
      MySQL [mysql]> SELECT User, Password FROM user;
      +------------------+----------+        
