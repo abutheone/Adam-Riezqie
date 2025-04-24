@@ -17,7 +17,7 @@
 #### Steps:
 
 1. **Scan for Services:**
-   - Used `nmap` to scan the target for open ports, focusing on [common database ports](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-ports):
+   - Used [`nmap`](/Cryptography-Class/Notes/Others/nmap_options_notes.md#-sv) to scan the target for open ports, focusing on [common database ports](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-ports):
      
      ```sh
      nmap -sV -p 1433,1521,3306,5432,27017 <target-ip>
