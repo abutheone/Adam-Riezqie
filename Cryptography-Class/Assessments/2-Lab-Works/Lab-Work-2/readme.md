@@ -63,7 +63,7 @@
      - **PostgreSQL:**
 
        ```sh
-       psql -h <targe-ip> -p 5432 -U <username> -W
+       psql -h <targe-ip> -p 5432 -U <username>
        ```
 
        ```sh
