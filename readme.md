@@ -21,3 +21,4 @@ This repo (may 🤞) includes:
 - [Module 4 - Symmetric Cryptography](Cryptography-Class/Notes/Module%204%20-%20Symmetric%20Cryptography.md)
 - [Module 5 - Asymmetric Cryptography](Cryptography-Class/Notes/Module%205%20-%20Asymmetric%20Cryptography.md)
 - [Module 6 - Cryptographic Protocol](Cryptography-Class/Notes/Module%206%20-%20Cryptographic%20Protocol.md)
+
