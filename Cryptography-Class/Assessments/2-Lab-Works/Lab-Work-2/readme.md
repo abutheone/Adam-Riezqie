@@ -126,22 +126,16 @@
         > This allowed a successful connection to the MySQL server.
       ---
     
-    - **Fix for PostgreSQL SSL + Authentication Error:**
+    - **Fix for PostgreSQL SSL:**
       - **Problem:**
         ```
         psql: error: connection to server at "192.168.109.131", port 5432 failed: SSL error: unsupported protocol
-        ...
-        connection to server at "192.168.109.131", port 5432 failed: fe_sendauth: no password supplied
         ```
 
         This means:
         - The client attempted to use SSL (by default) but the server doesn't support it.
-        - After retrying in non-SSL mode, authentication failed due to a missing password.
       
       - **Solution:** 
-        
-        Use environment variable `PGPASSWORD` to pass the password and explicitly disable SSL:
-
         ```
         PGPASSWORD=postgres psql -h 192.168.109.131 -p 5432 -U postgres "sslmode=disable"
         ```
