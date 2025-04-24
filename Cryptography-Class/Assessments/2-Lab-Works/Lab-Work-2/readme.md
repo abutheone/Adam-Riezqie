@@ -46,7 +46,7 @@
 
 
 2. **Connect to the Database:**
-   - Attempted to connect to the MySQL and PostgreSQL targets using [common database username](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-sernames):
+   - Attempted to connect to the MySQL and PostgreSQL targets using [common database username](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-usernames):
      - **MySQL:**
 
        ```sh
