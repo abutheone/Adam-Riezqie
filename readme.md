@@ -12,3 +12,4 @@ This repo (may 🤞) includes:
 
 ## Labwork
 - [Lab 1: Cryptographic Attacks: Brute Force and Traffic Analysis on Network Protocols](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-1/readme.md)
+- [Lab 2: Cryptographic Attacks: Cracking Weak Password Hashes and Exploiting Poor Authentication in Databases](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-2/readme.md)
