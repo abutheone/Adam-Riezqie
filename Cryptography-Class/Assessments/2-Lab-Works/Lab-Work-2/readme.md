@@ -288,8 +288,8 @@
 **🎯 Objective:** Locate tables with password hashes, extract them, and identify the hashing algorithm.
 > Going through all the databases and tables, I found several hash that catch my eyes.
 
-#### Password Hash Discovery 
-**1. DVWA:**
+#### **1. Password Hash Discovery**
+##### **DVWA:**
 
 ```
 MySQL [tikiwiki195]> use dvwa
@@ -323,7 +323,7 @@ MySQL [dvwa]> select * from users;
 5 rows in set (0.001 sec)
 ```
 
-**2. tikiwiki195:**
+##### **2. tikiwiki195:**
 ```
 MySQL [tikiwiki195]> show databases;
 +--------------------+
@@ -379,8 +379,8 @@ MySQL [tikiwiki195]> select userId, login, password, hash from users_users;
 1 row in set (0.001 sec)
 ```
 
-##### Table with Hash found:
-**From users.DVWA database:**
+###### **Table with Hash found:**
+From users.DVWA database:
 | User    | Hash Password                    |
 | ------- | -------------------------------- |
 | admin   | 5f4dcc3b5aa765d61d8327deb882cf99 |
@@ -389,14 +389,14 @@ MySQL [tikiwiki195]> select userId, login, password, hash from users_users;
 | 1337    | 8d3533d75ae2c3966d7e0d4fcc69216b |
 | smithy  | 5f4dcc3b5aa765d61d8327deb882cf99 |
 
-**From users_users.tikiwiki195 database:**
+From users_users.tikiwiki195 database:
 | login | Password | Hash                             |
 | ----- | -------- | -------------------------------- |
 | admin | admin    | f6fdffe48c908deb0f4c3bd36c032e72 |
 
 ---
 
-##### list of hash found:
+###### **list of hash found:**
 ```
 5f4dcc3b5aa765d61d8327deb882cf99
 e99a18c428cb38d5f260853678922e03
@@ -408,7 +408,7 @@ f6fdffe48c908deb0f4c3bd36c032e72
 > save into hashes.txt
 
 ---
-#### Hash Identification
+#### 2. Hash Identification
 
 **1. Identify the hash:**
 > going through one by one using hash-identifier give result of MD5:
@@ -444,7 +444,7 @@ Possible Hashs:
 
 **🎯 Objective:** Crack the extracted hashes using tools like hashcat or john the ripper
 
-**Cracck the hashes:**
+#### **Cracck the hashes:**
 ```
 └─$ john --format=Raw-MD5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
 Using default input encoding: UTF-8
