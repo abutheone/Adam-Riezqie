@@ -323,7 +323,7 @@ MySQL [dvwa]> select * from users;
 5 rows in set (0.001 sec)
 ```
 
-##### **2. tikiwiki195:**
+##### **tikiwiki195:**
 ```
 MySQL [tikiwiki195]> show databases;
 +--------------------+
