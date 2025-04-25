@@ -165,7 +165,7 @@
 **🎯 Objective:** Enumerate database users and identify those with cryptographic authentication flaws.
 > I narrow down for MySQL only, but in my free time I will cover PostgreSQL also.
 
-#### Steps:
+**Steps:**
 **1. List Users:**
    - Queried the database to list users step-by-step:
 
