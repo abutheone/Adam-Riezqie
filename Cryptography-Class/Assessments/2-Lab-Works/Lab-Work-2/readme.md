@@ -405,7 +405,7 @@ e99a18c428cb38d5f260853678922e03
 5f4dcc3b5aa765d61d8327deb882cf99
 f6fdffe48c908deb0f4c3bd36c032e72
 ```
-> save into hashes.txt
+> saved into [hashes.txt](/Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-2/Assets/Wordlists/hashes.txt)
 
 ---
 #### 2. Hash Identification
