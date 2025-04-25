@@ -1,4 +1,5 @@
 # Lab 2: Cryptographic Attacks: Cracking Weak Password Hashes and Exploiting Poor Authentication in Databases
+> Too long to read? I gotchu! [short version here!](/Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-2/demo-walkthrough.md)
 
 **🎯 Main Objective:**
   1. Identify and exploit cryptographic weaknesses in database authentication and password storage.
