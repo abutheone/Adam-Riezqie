@@ -41,7 +41,7 @@
   Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
   Nmap done: 1 IP address (1 host up) scanned in 6.43 seconds
   ```
-  > After scanning, we know at least two database service port is open: **MySQL** running on port 3306 and **PostgreSQL** running on port 5432
+  > After scanning, we identified two open database service ports: MySQL on port 3306 and PostgreSQL on port 5432.
   ---
 
 
@@ -74,11 +74,11 @@
     This may indicate that the server does not support any SSL protocol version between TLSv1.2 and TLSv1.3.
     connection to server at "192.168.109.131", port 5432 failed: fe_sendauth: no password supplied
     ```
-    > The PostgreSQL connection fails due to both an SSL protocol mismatch and missing password. PostgreSQL 8.3 doesn’t support modern TLS versions, causing SSL negotiation to fail unless disabled manually
+    > The **PostgreSQL** connection **fails** due to both an **SSL protocol mismatch** and **missing password**. PostgreSQL 8.3 **doesn’t support modern TLS** versions, *causing SSL negotiation to fail unless disabled manually.*
   ---
   
 #### 3. **Analyze Connection Issues:**
-  > During the connection attempts to both MySQL and PostgreSQL services, errors occurred due to TLS/SSL protocol mismatches. PostgreSQL also rejected the login due to incomplete password authentication.
+  > During connection attempts, **both MySQL and PostgreSQL** services encountered **TLS/SSL protocol mismatch errors**. PostgreSQL also required a password, which was not initially provided..
 
 - ##### **Fix for MySQL SSL Error:**
   - **Problem:**
@@ -123,7 +123,7 @@
     MySQL [(none)]> 
 
     ```
-    > This allowed a successful connection to the MySQL server.
+    > This allowed **successful connection** to the MySQL server, *verified by listing available databases.*
   ---
 
 - ##### **Fix for PostgreSQL SSL:**
@@ -131,7 +131,7 @@
     ```
     psql: error: connection to server at "192.168.109.131", port 5432 failed: SSL error: unsupported protocol
     ```
-    > This mean, I attempted to use SSL (by default) but the server doesn't support it.
+    > The client attempted to **use SSL by default**, but the *server does not support it*.
   
   - **Solution:** 
     ```
@@ -156,13 +156,14 @@
 
     postgres=# 
     ```
+    > Connection succeeded, verified by listing databases.
   ---
 
 
 ### 2. 👤 Enumeration of Users and Authentication Weakness
 
 **🎯 Objective:** Enumerate database users and identify those with cryptographic authentication flaws.
-> I narrow down for MySQL only, but in my free time I will discover PostgreSQL also.
+> I narrow down for MySQL only for this lab, but in my free time I will discover PostgreSQL also.
 
 **Steps:**
 ##### **1. Enumeration of Users:**
@@ -243,9 +244,10 @@
       ---
 
 ##### **2. User with cryptographic authentication flaws:**
-  - debian-sys-maint
-  - root
-  - guest
+  - Identified users with empty Password fields:
+    - debian-sys-maint
+    - root
+    - guest
 
 ##### **3. Attempt to login**
    - ###### debian-sys-maint:
@@ -281,6 +283,16 @@
 
       MySQL [(none)]>
       ```
+      > Both accounts allowed access without passwords, confirming weak access control.
+
+  
+
+##### 4. Question:
+1. Is accessing a database with no password a cryptographic failure?
+- Nah, it’s not exactly a crypto fail, more like a weak security move. No password means anyone can just walk in, no questions asked. It’s bad because:
+  - Passwords usually use crypto stuff (like hashing) to check if you’re legit.
+  - Without a password, there’s no crypto check, so hackers don’t even need to try hard.
+  - It skips the “prove who you are” or `authentication` part that crypto’s supposed to protect.
    
   ---
 ### 3. 🔑 Password Hash Discovery and Hash Identification
@@ -438,6 +450,10 @@ Possible Hashs:
 ```
 
 `and so on...`
+
+##### 3. Question:
+1. What cryptographic weaknesses exist in this hashing method?
+   - Easy to Break: MD5 is old and busted. Hackers can trick it into thinking different passwords are the same (called collisions).
 
   ---
 ### 4. 🔨 Offline Hash Cracking
