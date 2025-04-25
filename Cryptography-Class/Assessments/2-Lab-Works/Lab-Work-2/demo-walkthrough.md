@@ -8,25 +8,68 @@ Hey class, welcome to our demo on Lab 2: Cryptographic Attacks! Today, we’re d
 
 ## Service Enumeration and Initial Access (2 minutes)
 
-First, we need to scope out our target, like using digital binoculars. We use a tool called `nmap` to scan for database services on the target IP (192.168.109.131). The command is:
+First, we need to scope out our target, like using digital binoculars. We use a tool called `nmap` to scan for database services on the target IP (192.168.109.131) and for the username we use [common database username](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-usernames). The command is:
 
-```bash
-nmap -sV -p 1433,1521,3306,5432,27017 192.168.109.131
-```
+```sh
+  ┌──(adamriezqie㉿NWS23010043)-[~]
+  └─$ nmap -sV -p 1433,1521,3306,5432,27017 192.168.109.131
+  Starting Nmap 7.95 ( https://nmap.org ) at 2025-04-25 04:24 +08
+  Nmap scan report for 192.168.109.131
+  Host is up (0.00050s latency).
 
-This reveals MySQL running on port 3306 and PostgreSQL on port 5432. When we try to connect, it’s like the database says, “Prove yourself!” But we hit SSL/TLS errors. For MySQL, we disable SSL with:
+  PORT      STATE  SERVICE    VERSION
+  1433/tcp  closed ms-sql-s
+  1521/tcp  closed oracle
+  3306/tcp  open   mysql      MySQL 5.0.51a-3ubuntu5
+  5432/tcp  open   postgresql PostgreSQL DB 8.3.0 - 8.3.7
+  27017/tcp closed mongod
+  MAC Address: 00:0C:29:3C:0A:2B (VMware)
 
-```bash
-mysql -h 192.168.109.131 -u root -p --ssl=0
-```
+  Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+  Nmap done: 1 IP address (1 host up) scanned in 6.43 seconds
+  ```
 
-For PostgreSQL, we use:
+> This reveals MySQL running on port 3306 and PostgreSQL on port 5432.
 
-```bash
-PGPASSWORD=postgres psql -h 192.168.109.131 -p 5432 -U postgres "sslmode=disable"
-```
+When we try to connect, it’s like the database says, “Prove yourself!” But we hit SSL/TLS errors.
+ ```bash
+    ┌──(adamriezqie㉿NWS23010043)-[~]
+    └─$ mysql -h 192.168.109.131 -u root -p             
+    Enter password: 
+    ERROR 2026 (HY000): TLS/SSL error: wrong version number
+ ```
 
-Once connected, we list the databases with `show DATABASES;` for MySQL and `SELECT datname FROM pg_database;` for PostgreSQL. Boom, we’re in!
+**Solution:** Disable SSL in the client using the legacy-compatible option:
+  ```
+  ┌──(adamriezqie㉿NWS23010043)-[~]
+  └─$ mysql -h 192.168.109.131 -u root -p --ssl=0
+  Enter password: 
+  Welcome to the MariaDB monitor.  Commands end with ; or \g.
+  Your MySQL connection id is 33
+  Server version: 5.0.51a-3ubuntu5 (Ubuntu)
+  
+  Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+  
+  Support MariaDB developers by giving a star at https://github.com/MariaDB/server
+  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+  
+  MySQL [(none)]> show DATABASES;
+  +--------------------+
+  | Database           |
+  +--------------------+
+  | information_schema |
+  | dvwa               |
+  | metasploit         |
+  | mysql              |
+  | owasp10            |
+  | tikiwiki           |
+  | tikiwiki195        |
+  +--------------------+
+  7 rows in set (0.005 sec)
+  
+  MySQL [(none)]> 
+  ```
+
 
 ## User Enumeration and Authentication Weakness (2 minutes)
 
@@ -35,6 +78,16 @@ Now, in MySQL, we check the `user` table to see who’s got access. We run:
 ```sql
 use mysql;
 SELECT User, Password FROM user;
++------------------+----------+        
+| User             | Password |
++------------------+----------+
+| debian-sys-maint |          |
+| root             |          |
+| guest            |          |
++------------------+----------+
+3 rows in set (0.001 sec)
+
+MySQL [mysql]> 
 ```
 
 Shockingly, users like `root` and `guest` have *no passwords*! It’s like finding a treasure chest without a lock. We test this by logging in:
