@@ -14,7 +14,7 @@
 
 **🎯 Objective:** Identify the database service on the target, connect to it from Kali Linux, and analyze any connection issues.
 
-#### Steps:
+**Steps:**
 
 1. **Scan for Services:**
 - Used [`nmap`](/Cryptography-Class/Notes/Others/nmap_options_notes.md#-sv) to scan the target for open ports, focusing on [common database ports](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-ports):
