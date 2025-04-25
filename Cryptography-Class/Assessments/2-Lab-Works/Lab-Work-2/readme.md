@@ -158,14 +158,14 @@
     ```
   ---
 
-  
+
 ### 2. 👤 Enumeration of Users and Authentication Weakness
 
 **🎯 Objective:** Enumerate database users and identify those with cryptographic authentication flaws.
-> I narrow down for MySQL only, but in my free time I will cover PostgreSQL also.
+> I narrow down for MySQL only, but in my free time I will discover PostgreSQL also.
 
 **Steps:**
-**1. List Users:**
+##### **1. Enumeration of Users:**
    - Queried the database to list users step-by-step:
 
      ```
@@ -242,13 +242,13 @@
      ```
       ---
 
-**2. User with cryptographic authentication flaws:**
+##### **2. User with cryptographic authentication flaws:**
   - debian-sys-maint
   - root
   - guest
 
-**3. Attempt to login**
-   - debian-sys-maint:
+##### **3. Attempt to login**
+   - ###### debian-sys-maint:
       ```
       ┌──(adamriezqie㉿NWS23010043)-[~]
       └─$ mysql -h 192.168.109.131 -u debian-sys-maint -p --ssl=0  
@@ -264,7 +264,7 @@
 
       MySQL [(none)]> ^DBye
       ``` 
-   - guest:
+   - ###### guest:
 
       ```
       ┌──(adamriezqie㉿NWS23010043)-[~]
