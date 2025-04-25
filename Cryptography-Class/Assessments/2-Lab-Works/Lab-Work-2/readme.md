@@ -262,7 +262,7 @@
       Support MariaDB developers by giving a star at https://github.com/MariaDB/server
       Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-      MySQL [(none)]> ^DBye
+      MySQL [(none)]>
       ``` 
    - ###### guest:
 
@@ -279,7 +279,7 @@
       Support MariaDB developers by giving a star at https://github.com/MariaDB/server
       Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-      MySQL [(none)]> ^DBye
+      MySQL [(none)]>
       ```
    
   ---
