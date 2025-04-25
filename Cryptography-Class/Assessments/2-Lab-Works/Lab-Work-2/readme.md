@@ -16,7 +16,7 @@
 
 **Steps:**
 
-1. **Scan for Services:**
+#### 1. **Scan for Services:**
 - Used [`nmap`](/Cryptography-Class/Notes/Others/nmap_options_notes.md#-sv) to scan the target for open ports, focusing on [common database ports](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-ports):
   
   ```sh
@@ -45,9 +45,9 @@
   ---
 
 
-2. **Connect to the Database:**
+#### 2. **Connect to the Database:**
 - Attempted to connect to the MySQL and PostgreSQL targets using [common database username](/Cryptography-Class/Notes/Others/Database%20Notes.md#common-database-usernames):
-  - **MySQL:**
+  - ##### **MySQL:**
 
     ```sh
     mysql -h <targe-ip> -u <username> -p 
@@ -60,7 +60,7 @@
     ERROR 2026 (HY000): TLS/SSL error: wrong version number
     ```
 
-  - **PostgreSQL:**
+  - ##### **PostgreSQL:**
 
     ```sh
     psql -h <targe-ip> -p 5432 -U <username>
@@ -77,89 +77,88 @@
     > The PostgreSQL connection fails due to both an SSL protocol mismatch and missing password. PostgreSQL 8.3 doesn’t support modern TLS versions, causing SSL negotiation to fail unless disabled manually
   ---
   
-3. **Analyze Connection Issues:**
-    > During the connection attempts to both MySQL and PostgreSQL services, errors occurred due to TLS/SSL protocol mismatches. PostgreSQL also rejected the login due to incomplete password authentication.
+#### 3. **Analyze Connection Issues:**
+  > During the connection attempts to both MySQL and PostgreSQL services, errors occurred due to TLS/SSL protocol mismatches. PostgreSQL also rejected the login due to incomplete password authentication.
 
-    - **Fix for MySQL SSL Error:**
-      - **Problem:**
-        ```
-        ERROR 2026 (HY000): TLS/SSL error: wrong version number
-        ``` 
-        > This indicates the client tried to connect with SSL/TLS, but the server (MySQL 5.0.51a) does not support the version or SSL at all.
+- ##### **Fix for MySQL SSL Error:**
+  - **Problem:**
+    ```
+    ERROR 2026 (HY000): TLS/SSL error: wrong version number
+    ``` 
+    > This indicates the client tried to connect with SSL/TLS, but the server (MySQL 5.0.51a) does not support the version or SSL at all.
 
-      - **Solution:** Disable SSL in the client using the legacy-compatible option:
+  - **Solution:** Disable SSL in the client using the legacy-compatible option:
 
-        ```
-        mysql -h 192.168.109.131 -u root -p --ssl=0
-        ```
+    ```
+    mysql -h 192.168.109.131 -u root -p --ssl=0
+    ```
 
-        ```
-        ┌──(adamriezqie㉿NWS23010043)-[~]
-        └─$ mysql -h 192.168.109.131 -u root -p --ssl=0
-        Enter password: 
-        Welcome to the MariaDB monitor.  Commands end with ; or \g.
-        Your MySQL connection id is 33
-        Server version: 5.0.51a-3ubuntu5 (Ubuntu)
+    ```
+    ┌──(adamriezqie㉿NWS23010043)-[~]
+    └─$ mysql -h 192.168.109.131 -u root -p --ssl=0
+    Enter password: 
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 33
+    Server version: 5.0.51a-3ubuntu5 (Ubuntu)
 
-        Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-        Support MariaDB developers by giving a star at https://github.com/MariaDB/server
-        Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    Support MariaDB developers by giving a star at https://github.com/MariaDB/server
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-        MySQL [(none)]> show DATABASES;
-        +--------------------+
-        | Database           |
-        +--------------------+
-        | information_schema |
-        | dvwa               |
-        | metasploit         |
-        | mysql              |
-        | owasp10            |
-        | tikiwiki           |
-        | tikiwiki195        |
-        +--------------------+
-        7 rows in set (0.005 sec)
+    MySQL [(none)]> show DATABASES;
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | information_schema |
+    | dvwa               |
+    | metasploit         |
+    | mysql              |
+    | owasp10            |
+    | tikiwiki           |
+    | tikiwiki195        |
+    +--------------------+
+    7 rows in set (0.005 sec)
 
-        MySQL [(none)]> 
+    MySQL [(none)]> 
 
-        ```
-        > This allowed a successful connection to the MySQL server.
-      ---
-    
-    - **Fix for PostgreSQL SSL:**
-      - **Problem:**
-        ```
-        psql: error: connection to server at "192.168.109.131", port 5432 failed: SSL error: unsupported protocol
-        ```
-        > This mean, I attempted to use SSL (by default) but the server doesn't support it.
-      
-      - **Solution:** 
-        ```
-        PGPASSWORD=postgres psql -h 192.168.109.131 -p 5432 -U postgres "sslmode=disable"
-        ```
-
-        ```
-        ┌──(adamriezqie㉿NWS23010043)-[~]
-        └─$ PGPASSWORD=postgres psql -h 192.168.109.131 -p 5432 -U postgres "sslmode=disable"
-        psql (17.4 (Debian 17.4-1+b1), server 8.3.1)
-        WARNING: psql major version 17, server major version 8.3.
-                Some psql features might not work.
-        Type "help" for help.
-
-        postgres=# SELECT datname FROM pg_database;
-          datname  
-        -----------
-        template1
-        template0
-        postgres
-        (3 rows)
-
-        postgres=# 
-        ```
-
-
-
+    ```
+    > This allowed a successful connection to the MySQL server.
   ---
+
+- ##### **Fix for PostgreSQL SSL:**
+  - **Problem:**
+    ```
+    psql: error: connection to server at "192.168.109.131", port 5432 failed: SSL error: unsupported protocol
+    ```
+    > This mean, I attempted to use SSL (by default) but the server doesn't support it.
+  
+  - **Solution:** 
+    ```
+    PGPASSWORD=postgres psql -h 192.168.109.131 -p 5432 -U postgres "sslmode=disable"
+    ```
+
+    ```
+    ┌──(adamriezqie㉿NWS23010043)-[~]
+    └─$ PGPASSWORD=postgres psql -h 192.168.109.131 -p 5432 -U postgres "sslmode=disable"
+    psql (17.4 (Debian 17.4-1+b1), server 8.3.1)
+    WARNING: psql major version 17, server major version 8.3.
+            Some psql features might not work.
+    Type "help" for help.
+
+    postgres=# SELECT datname FROM pg_database;
+      datname  
+    -----------
+    template1
+    template0
+    postgres
+    (3 rows)
+
+    postgres=# 
+    ```
+  ---
+
+  
 ### 2. 👤 Enumeration of Users and Authentication Weakness
 
 **🎯 Objective:** Enumerate database users and identify those with cryptographic authentication flaws.
