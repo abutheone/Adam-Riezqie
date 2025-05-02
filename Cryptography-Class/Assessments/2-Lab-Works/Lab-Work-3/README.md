@@ -89,3 +89,38 @@ openssl enc -aes-256-cbc -K $(cat aes.key) -iv $(cat aes.iv) -in syed.txt -out s
 
 #### Step 4: Decrypt the Message
 #### Step 5: Verify the Decrypted Message
+
+---
+
+### Task 2: Asymmetric Encryption and Decryption using RSA
+
+#### Step 1: Research how to generate an RSA private key of at least 2048 bits using `OpenSSL`.
+#### Step 2: Research how to extract the corresponding public key from the private key using `OpenSSL`.
+#### Step 3: Labu (simulated by you) encrypts a message (save it in `rahsia.txt`) using Labi's public key with `OpenSSL`.
+#### Step 4: Labi (simulated by you) decrypts the ciphertext using his private key with `OpenSSL`.
+#### Step 5: Verify that the decrypted message matches the original secret message.
+
+---
+
+### Task 3: Hashing and Message Integrity using SHA-256
+
+#### Step 1: Create a text file (e.g., `<Your Name>.txt`) with some content.
+#### Step 2: Research how to generate the SHA-256 hash of the document using `openssl`.
+#### Step 3: Simulate a modification to the `<Your Name>.txt` file (e.g., change a single character).
+#### Step 4: Generate the SHA-256 hash of the modified document using the same tool.
+#### Step 5: Compare the two hash values and observe the difference. Explain what this demonstrates about
+
+---
+
+### Task 4: Digital Signatures using RSA
+
+#### Step 1: Use the RSA private key generated in Task 2 (representing Labu's private key).
+#### Step 2: Create a text file (e.g., `agreement.txt`) that Labu wants to sign.
+#### Step 3: Research how to use `OpenSSL` to generate a digital signature for the `agreement.txt` file using Labu's private key and the SHA-256 hashing algorithm.
+#### Step 4: Research how to use `OpenSSL` and Labu's public key (generated in Task 2) to verify the digital signature of the `agreement.txt` file.
+#### Step 5: Simulate a modification to the `agreement.txt` file and attempt to verify the original signature. Observe the result and explain why it occurs.
+
+---
+
+### Analyze Problems Encountered
+
