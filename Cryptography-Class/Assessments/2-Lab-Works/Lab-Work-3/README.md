@@ -211,8 +211,45 @@ HOIokZrO9ZY/LqxMjfTMkN+uMZKOwyRXwqQSdQAYdsrw2yKBeeKvgg6S/GYNAwOE
                          I��nڇ�#*��ī�!�S����r�I���<   
 ```
 
-#### Step 4: Labi (simulated by you) decrypts the ciphertext using his private key with `OpenSSL`.
-#### Step 5: Verify that the decrypted message matches the original secret message.
+#### Step 4: Decrypt using the private key.
+
+
+#### Step 5: Verify the decrypted message matches the original.
+
+**Command:**
+```bash
+   cat secret.decrypt secret.txt
+```
+
+```bash
+   ll secret.decrypt secret.txt
+```
+
+```bash
+   diff secret.decrypt secret.txt
+```
+
+**Result:**
+```bash
+                                                                                     
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ cat secret.decrypt secret.txt
+hi syed, long time no see... here secret message for you :143
+hi syed, long time no see... here secret message for you :143
+                                                                                     
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ ll secret.decrypt secret.txt
+-rw-rw-r-- 1 adamriezqie adamriezqie 62 May  2 14:22 secret.decrypt
+-rw-rw-r-- 1 adamriezqie adamriezqie 62 May  2 13:30 secret.txt
+                                                                                     
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ diff secret.decrypt secret.txt
+                                                                                     
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ 
+```
+
+
 
 ---
 
