@@ -3,10 +3,10 @@
 **🎯 Lab Objective:**
 In this lab, we’ll explore the basics of cryptography using **OpenSSL**, a powerful and widely-used command-line toolkit for cryptographic operations.
 
-We'll go through the following tasks **step-by-step**:
-- **Encrypt** and **decrypt** files using **AES (symmetric encryption)** and **RSA (asymmetric encryption)**
-- **Generate** and **verify** **SHA-256 hashes** to ensure data integrity
-- **Create** and **verify** **digital signatures** using **RSA** and **SHA-256**
+- We'll go through the following tasks **step-by-step**:
+  - **Encrypt** and **decrypt** files using **AES (symmetric encryption)** and **RSA (asymmetric encryption)**
+  - **Generate** and **verify** **SHA-256 hashes** to ensure data integrity
+  - **Create** and **verify** **digital signatures** using **RSA** and **SHA-256**
 
 > By the end of this walkthrough, you’ll have hands-on experience with key cryptographic concepts and how they’re applied using OpenSSL.
 
@@ -20,7 +20,7 @@ We'll go through the following tasks **step-by-step**:
 
 ## 💼 Lab Tasks:
 
-### Task 1: Symmetric Encryption and Decryption using AES-256-CBC
+### 🔐 Task 1: Symmetric Encryption and Decryption using AES-256-CBC
 **🎯 Objective:** In this task, we (me and [Syed](https://github.com/yed-0)) will simulate how to send a confidential message securely using symmetric encryption. We’ll use the AES-256-CBC encryption algorithm in OpenSSL to encrypt and decrypt a message.
 
 <div style="display: flex; justify-content: center; margin-top: 20px;">
@@ -34,7 +34,7 @@ We'll go through the following tasks **step-by-step**:
 ---
 
 
-#### Step 1: Research how to generate a strong, random key using `OpenSSL`.
+#### 🔍 Step 1: Research how to generate a strong, random key using `OpenSSL`.
 
 **Command for create [key](Assets/Task-1/key):**
 ```bash
@@ -74,7 +74,7 @@ bac6130b2c33397a5afbf851cfd0acb9
 - Hex format is **compatible** with OpenSSL’s `-K` and `-iv` options for direct key/IV input.
 
 ---
-#### Step 2: Create a Message to Encrypt
+#### ✉️ Step 2: Create a Message to Encrypt
 Here syed create a message to encrypt.
 
 **Command for create a message:**
@@ -89,7 +89,7 @@ echo "isi message sini syed" > syed.txt
 ```
 
 ---
-#### Step 3: Encrypt the Message Using AES-256-CBC
+#### 🔐Step 3: Encrypt the Message Using AES-256-CBC
 Next, Syed encrypted the message using AES-256-CBC with the key and IV.
 
 **The OpenSSL command is:**
@@ -121,6 +121,26 @@ kelisa putih nampak rare
 
 
 #### Step 5: Verify the Decrypted Message
+**Command:**
+```bash
+ll filename.txt filename.decrypt
+```
+```bash
+diff filename filename.decrypt
+```
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ ll syed.txt syed.decrypt
+-rw-rw-r-- 1 syed syed 25 May  2 00:53 syed.decrypt
+-rw-rw-r-- 1 syed syed 25 May  2 00:05 syed.txt
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ diff syed.txt syed.decrypt
+
+┌──(syed㉿NWS23010037)-[~]                                      
+└─$ 
+```
 
 
 
