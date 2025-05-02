@@ -100,7 +100,7 @@ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename -out filena
 - **`-out filename.enc`**: Defines the output file for the encrypted ciphertext.
 </details>
 
----
+
 **Result:**
 ```bash
 ┌──(syed㉿NWS23010037)-[~]
@@ -121,7 +121,6 @@ openssl enc -d -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename.enc -out fi
 - `-out filename.decrypt`: Defines the output file for the decrypted plaintext.
 </details>
 
----
 **Result:**
 ```bash
 ┌──(adamriezqie㉿NWS23010043)-[~/Downloads]
@@ -176,7 +175,7 @@ openssl genpkey -algorithm RSA -out filename -pkeyopt rsa_keygen_bits:2048
 - `-pkeyopt rsa_keygen_bits:2048`: Sets the RSA key size to 2048 bits for secure encryption.
 </details>
 
----
+
 **Result:**
 ```bash
 ┌──(syed㉿NWS23010037)-[~]
