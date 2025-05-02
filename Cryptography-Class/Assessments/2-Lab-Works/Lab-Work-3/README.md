@@ -36,23 +36,36 @@ We'll go through the following tasks **step-by-step**:
 
 #### Step 1: Research how to generate a strong, random key using `OpenSSL`.
 
-**Command for create key:**
+**Command for create [key](Assets/Task-1/key):**
 ```bash
 openssl rand -hex 32 > key
 ```
 
 **Result:**
-- letak kat sini copy from terminal
-- dengan screenshot
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl rand -hex 32 > key
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ cat key
+595369a67de06fa9619e2cab404180e958e07dc258423b6509b11dfd4c4aa8f3
+```
 
 
-**Command for create iv:**
+**Command for create [iv](Assets/Task-1/iv):**
 ```bash
 openssl rand -hex 16 > iv
 ```
 **Result:**
-- letak kat sini copy from terminal
-- dengan screenshot
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl rand -hex 16 > iv
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ cat iv
+bac6130b2c33397a5afbf851cfd0acb9
+```
+
 
 **Based on our discussion**, here’s a breakdown of the research process for generating a strong, random key using OpenSSL for AES-256-CBC encryption. Keeping it short and to the point.
 - `openssl rand` command generates cryptographically secure random data.
