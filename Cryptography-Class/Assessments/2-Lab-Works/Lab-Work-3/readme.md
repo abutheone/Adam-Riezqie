@@ -38,7 +38,7 @@ We'll go through the following tasks **step-by-step**:
 
 **Command for create key:**
 ```bash
-openssl rand -hex 32 > key.txt
+openssl rand -hex 32 > key
 ```
 
 **Result:**
