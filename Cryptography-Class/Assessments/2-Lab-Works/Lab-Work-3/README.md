@@ -367,11 +367,72 @@ SHA2-256(info.txt)= 6cca854084069003bec800a1dd1b07cf54f8da311f3db783afa095ab0369
 
 ### Task 4: Digital Signatures using RSA
 
-#### Step 1: Use the RSA private key generated in Task 2 (representing Labu's private key).
-#### Step 2: Create a text file (e.g., `agreement.txt`) that Labu wants to sign.
-#### Step 3: Research how to use `OpenSSL` to generate a digital signature for the `agreement.txt` file using Labu's private key and the SHA-256 hashing algorithm.
-#### Step 4: Research how to use `OpenSSL` and Labu's public key (generated in Task 2) to verify the digital signature of the `agreement.txt` file.
-#### Step 5: Simulate a modification to the `agreement.txt` file and attempt to verify the original signature. Observe the result and explain why it occurs.
+#### Step 1: create and Sign the file using Private Key from Task 2.
+**Command:**
+```bash
+echo "anything" > filename
+openssl dgst -sha256 -sign filename -out filename filename
+```
+
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ echo "lambat bayar bunga naik" > agreement.txt 
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl dgst -sha256 -sign private.key  -out agreement.sign agreement.txt     
+```
+
+#### Step 2: Verify the Signature using Public Key
+**Command:**
+```bash
+openssl dgst -sha256 -verify public.key -signature agreement.sign agreement.txt
+```
+
+
+**Result:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-4]
+└─$ cp ../task-2/public.key public.key                                             
+                                                                                                                              
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-4]
+└─$ ls
+agreement.sign  agreement.txt  public.key
+                                                                                                                              
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-4]
+└─$ openssl dgst -sha256 -verify public.key -signature agreement.sign agreement.txt
+Verified OK
+                                                                                                                              
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-4]
+└─$ 
+```
+
+#### Step 3:  Tamper the file
+**Command:**
+```bash
+echo "anything" >> filename
+```
+
+**Result:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-4]
+└─$ echo "\n\n\n\n\n\nHope syed did not see this coming alsooooooo" >> agreement.txt
+```
+
+#### Step 4: Verify again
+**Command:**
+```bash
+openssl dgst -sha256 -verify public.key -signature agreement.sign agreement.txt
+```
+
+**Result:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-4]
+└─$ openssl dgst -sha256 -verify public.key -signature agreement.sign agreement.txt
+Verification failure
+4067DC4F6A7F0000:error:02000068:rsa routines:ossl_rsa_verify:bad signature:../crypto/rsa/rsa_sign.c:442:
+4067DC4F6A7F0000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:../providers/implementations/signature/rsa_sig.c:1041:
+```
 
 ---
 
