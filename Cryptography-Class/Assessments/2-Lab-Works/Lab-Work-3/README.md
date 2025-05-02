@@ -124,10 +124,9 @@ kelisa putih nampak rare
 **Command:**
 ```bash
 ll filename.txt filename.decrypt
-```
-```bash
 diff filename filename.decrypt
 ```
+
 **Result:**
 ```bash
 ┌──(syed㉿NWS23010037)-[~]
@@ -159,8 +158,39 @@ openssl genpkey -algorithm RSA -out filename -pkeyopt rsa_keygen_bits:2048
 ```bash
 ┌──(syed㉿NWS23010037)-[~]
 └─$ openssl genpkey -algorithm RSA -out private.key  -pkeyopt rsa_keygen_bits:2048
-..+..+....+.........+............+++++++++++++++++++++++++++++++++++++++*........+.......+...........+.......+...+..+.......+++++++++++++++++++++++++++++++++++++++*..+..........+.........+...........+.......+..+.........+.......+...+...............+..+............+.+......+....................+........................+.+...+..+...+...+...+.+...+...+...............+..+.....................+.+......+..+.+.........+....................+.+....................+...............+.......+..++++++                                                                                        
-.+.+++++++++++++++++++++++++++++++++++++++*..........+..+.+..+...+.......+++++++++++++++++++++++++++++++++++++++*.......................+..+............+..................+.++++++                                                                         
+..+..+....+.........+............+++++++++++++++++++++++++++++++++++++++*........+.......+...........+.......+...+..+.......+++++++++++++++++++++++++++++++++++++++*..+..........+.........+...........+.......+..+.........+.......+...+...............+..+............+.+......+....................+........................+.+...+..+...+...+...+.+...+...+...............+..+.....................+.+......+..+.+.........+....................+.+....................+...............+.......+..++++++
+.+.+++++++++++++++++++++++++++++++++++++++*..........+..+.+..+...+.......+++++++++++++++++++++++++++++++++++++++*.......................+..+............+..................+.++++++
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ cat private.key
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCmoutBA9yAzo/L
+YMyC3DzUrCHjfI8e4W48blXtn1MJDPdk3/ybWA6egMv7wF8zZubmlkoFB9P19XsW
+dnegy2QyVChzW5+ny4FFKUXYVaMYk/pWcnVV1UB2P+IYXB6gJ/NX+jIoCOeTsXOY
+sdWMiozIxvVpCn1hQQb68x2W8tqOg+Bb4sKpIgL0tXDkqWiRpyJnJXosiy836rW5
+74kNyyMc4iiRms71lj8urEyN9MyQ364xko7DJFfCpBJ1ABh2yvDbIoF54q+CDpL8
+Zg0DA4T83Dp2MLCAYWKdWBCeXjrlOrKdP4YY0EPsLRvjpL/V10ShG6iamGS2jj4L
+FY0ShcPrAgMBAAECggEAIM3CvTZK4sqHMTTZnctIaF+IflWHgT9Eqb3YyaILQSVd
+0GxtuJERs69MOL+qnh5cRzl/0dS0K9/K/uWMcEmJ7IR3wBnh6LDdvmU9HDTjmhOL
+fRgkNCT6fyzdUAlWeBXVSFT3Kb1zBTayOHWNwhCGXYIZTrfjbdFU0/MnOI+Pae2H
+lW3NSSo1FUPbdCbyZSA0NOo/qQSyVzOnB/V6ZK4klKFVaEKCv4g1XanaG+m4Z9HX
+Pmq1DyuVe3scrBGThxfdalLc1NShCQFZ0Uv8Vn7nt8bST3og1rDUvQyMRX35V9P3
+R01sjEDxhkbNZri3Hhb2uFMd8TNWRb+2uTNpSR4TuQKBgQDgRM121VP+BnG1q9MU
+Yf/FxpfMhKrMjzWbsNfBe+m1jSZf59IdZUZyjsQXWQvtOOzwr1QPgk/PBPi/MfOg
+Kko1wdlS4/tcL+bTwAxZSfmuS94O9NZVug5c5KC8VoYkLTT1kBxabIuXM1Wl3PF9
+Cd8ln6z0SkvdokMYuHpFNDfNMwKBgQC+NqAXX7w8Ph9dhlrB/nOx44Dg2rxu7H11
+Uca+vyQVjcpoOd9+Huv2iOzJPM93r0pp7ShGFsfhpQXVn+M3EpqntXEpbrwpEsAV
+JD7Xo2zKKsQ1M9GphhwwRsiqU9gSeffi3bgm93ja+IzHmU4s+87pZRr2isofTOy8
+KIcNKc7+aQKBgQCeHiQ2ikWDrgtxqMlTb5yjVlckLM03GCkVseMMWU73X6MUrx8m
+9oZqsllylKeiAyaasyKzJI8cSEcQlilMXUShDiEpHe/UmTlHRfnu4gcVagwPw3Ny
+UZFa0R66as58pxrVn1s+LZVlbx4NqO7h15nqrt+EBPXkN0jTHw2lySEmnQKBgBsG
+5/hqQfTNXueLD5pA7W95Q/avHdclAy6IUBUKU7Y8T2Y/0uG4ww5kpkBxw4jd/1TN
+vcs3sW7+Y7XW4hIRMqhhv5KDiXjMkT5vx/4b2nlfWkG0+zV7OMYjSJ/rCeiWLAKw
+PlpLD4ENj/NMdS8vGFdRZmNhlRadd4XEvGvCZQcBAoGAFHtrYMIaGgRMz7b8tKRJ
+BbABKXcM3JkpUmHb3j0WlMX1wUpF21V1l1XUtnAW/Q0USwvMClgGnnkEvth/lkA7
+9ANRgsB5Fsg/EjUIXVZZ8Rs3rNSeTAsny7vyHpGyn3zsBizUsVVq+NOEOmSfEusr
+yiCkQ3SgWYY2hAfUJ0oPr10=
+-----END PRIVATE KEY-----
 ```
 
 
@@ -212,21 +242,28 @@ HOIokZrO9ZY/LqxMjfTMkN+uMZKOwyRXwqQSdQAYdsrw2yKBeeKvgg6S/GYNAwOE
 ```
 
 #### Step 4: Decrypt using the private key.
+**Command:**
+```bash
+openssl pkeyutl -decrypt -inkey filename -in filename -out filename
+```
 
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl pkeyutl -decrypt -inkey private.key -in secret.enc -out secret.decrypt
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ cat secret.decrypt                                                                                              
+hi syed, long time no see... here secret message for you :143
+```
 
 #### Step 5: Verify the decrypted message matches the original.
 
 **Command:**
 ```bash
-   cat secret.decrypt secret.txt
-```
-
-```bash
-   ll secret.decrypt secret.txt
-```
-
-```bash
-   diff secret.decrypt secret.txt
+cat secret.decrypt secret.txt
+ll secret.decrypt secret.txt
+diff secret.decrypt secret.txt
 ```
 
 **Result:**
