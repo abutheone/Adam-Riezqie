@@ -107,6 +107,7 @@ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename -out filena
 └─$ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in syed.txt -out syed.txt.enc
 ```
 
+---
 #### Step 4: Decrypt the Message
 **The OpenSSL command is:**
 ```bash
@@ -131,7 +132,7 @@ openssl enc -d -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename.enc -out fi
 kelisa putih nampak rare
 ```
 
-
+---
 #### Step 5: Verify the Decrypted Message
 **Command:**
 ```bash
@@ -215,7 +216,7 @@ yiCkQ3SgWYY2hAfUJ0oPr10=
 -----END PRIVATE KEY-----
 ```
 
-
+---
 #### Step 2: Extract the public key
 
 **Command:**
@@ -242,7 +243,7 @@ HOIokZrO9ZY/LqxMjfTMkN+uMZKOwyRXwqQSdQAYdsrw2yKBeeKvgg6S/GYNAwOE
 -----END PUBLIC KEY-----
 ```
 
-
+---
 #### Step 3: Encrypt a message using the public key`OpenSSL`.
 
 **First, generate the secret message:**
@@ -263,6 +264,7 @@ HOIokZrO9ZY/LqxMjfTMkN+uMZKOwyRXwqQSdQAYdsrw2yKBeeKvgg6S/GYNAwOE
                          I��nڇ�#*��ī�!�S����r�I���<   
 ```
 
+---
 #### Step 4: Decrypt using the private key.
 **Command:**
 ```bash
@@ -279,6 +281,7 @@ openssl pkeyutl -decrypt -inkey filename -in filename -out filename
 hi syed, long time no see... here secret message for you :143
 ```
 
+---
 #### Step 5: Verify the decrypted message matches the original.
 
 **Command:**
@@ -330,6 +333,7 @@ echo "anything" > filename
 27/6/2025 12.A.M lobby
 ```
 
+---
 #### Step 2: Generate SHA-256 hash
 **command:**
 ```bash
@@ -343,6 +347,7 @@ openssl dgst -sha256 filename
 SHA2-256(info.txt)= 6cca854084069003bec800a1dd1b07cf54f8da311f3db783afa095ab03693d45
 ```
 
+---
 #### Step 3: Modify the file slightly
 **command:**
 ```bash
@@ -368,6 +373,7 @@ echo "anything" >> filename
 Hope syed did not see this comming
 ```
 
+---
 #### Step 4: Regenerate the hash and check it
 **command:**
 ```bash
@@ -405,6 +411,7 @@ openssl dgst -sha256 -sign filename -out filename filename
 └─$ openssl dgst -sha256 -sign private.key  -out agreement.sign agreement.txt     
 ```
 
+---
 #### Step 2: Verify the Signature using Public Key
 **Command:**
 ```bash
@@ -429,6 +436,7 @@ Verified OK
 └─$ 
 ```
 
+---
 #### Step 3:  Tamper the file
 **Command:**
 ```bash
@@ -441,6 +449,7 @@ echo "anything" >> filename
 └─$ echo "\n\n\n\n\n\nHope syed did not see this coming alsooooooo" >> agreement.txt
 ```
 
+---
 #### Step 4: Verify again
 **Command:**
 ```bash
@@ -459,6 +468,6 @@ Verification failure
 ---
 
 ### Problem Analysis
-- We encaouter an error during encrypt using AES becaause of using base64. Then we googling and find the solution to use hex. 
-- We encounter a technial error because of missing file such as `agreement.txt` during verify. Then we just call back the file.
+- **AES Encryption Error:** Base64 key caused an error. Resolved by using `openssl rand -hex 32` after researching OpenSSL documentation.
+- **Missing File:** `agreement.txt` was missing during verification. Fixed by retransfer it using `wormhole`.
 
