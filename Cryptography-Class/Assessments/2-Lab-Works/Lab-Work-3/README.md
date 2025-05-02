@@ -89,7 +89,7 @@ echo "isi message sini syed" > syed.txt
 ```
 
 ---
-#### 🔐Step 3: Encrypt the Message Using AES-256-CBC
+#### 🔐 Step 3: Encrypt the Message Using AES-256-CBC
 Next, Syed encrypted the message using AES-256-CBC with the key and IV.
 
 **The OpenSSL command is:**
@@ -103,7 +103,7 @@ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename -out filena
 └─$ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in syed.txt -out syed.txt.enc
 ```
 
-#### Step 4: Decrypt the Message
+#### 🔓 Step 4: Decrypt the Message
 **The OpenSSL command is:**
 ```bash
 openssl enc -d -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename.enc -out filename.decrypt
@@ -120,7 +120,7 @@ kelisa putih nampak rare
 ```
 
 
-#### Step 5: Verify the Decrypted Message
+#### ✅ Step 5: Verify the Decrypted Message
 **Command:**
 ```bash
 ll filename.txt filename.decrypt
@@ -435,6 +435,4 @@ Verification failure
 ```
 
 ---
-
-### Analyze Problems Encountered
 
