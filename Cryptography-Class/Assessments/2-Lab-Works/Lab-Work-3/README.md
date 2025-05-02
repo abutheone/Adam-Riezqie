@@ -1,6 +1,6 @@
 # Lab 3: Hands-on Exploration of Cryptographic Tools: Hashing, Encryption, and Digital Signatures
 
-**🎯 Lab Objective:**
+**Lab Objective:**
 In this lab, we’ll explore the basics of cryptography using **OpenSSL**, a powerful and widely-used command-line toolkit for cryptographic operations.
 
 - We'll go through the following tasks **step-by-step**:
@@ -8,33 +8,23 @@ In this lab, we’ll explore the basics of cryptography using **OpenSSL**, a pow
   - **Generate** and **verify** **SHA-256 hashes** to ensure data integrity
   - **Create** and **verify** **digital signatures** using **RSA** and **SHA-256**
 
-> By the end of this walkthrough, you’ll have hands-on experience with key cryptographic concepts and how they’re applied using OpenSSL.
+> *By the end of this walkthrough, you’ll have hands-on experience with key cryptographic concepts and how they’re applied using OpenSSL.*
 
 ---
 
-## 📦 Tools Used:
+## Tools Used:
 1. OpenSSL
 2. [Wormhole](https://wormhole.app/) (end-to-end encryption private file sharing)
 
 ---
 
-## 💼 Lab Tasks:
+## Lab Tasks:
 
-### 🔐 Task 1: Symmetric Encryption and Decryption using AES-256-CBC
-**🎯 Objective:** In this task, we (me and [Syed](https://github.com/yed-0)) will simulate how to send a confidential message securely using symmetric encryption. We’ll use the AES-256-CBC encryption algorithm in OpenSSL to encrypt and decrypt a message.
-
-<div style="display: flex; justify-content: center; margin-top: 20px;">
-  <div style="font-family: monospace; background-color: #0d1117; color: #c9d1d9; padding: 8px 12px; border-radius: 6px;">
-    <a href="https://github.com/yed-0" target="_blank" style="color: #58a6ff; text-decoration: none;">syed</a>
-    --[confidential 📨]--> 
-    <a href="https://github.com/abutheone" target="_blank" style="color: #58a6ff; text-decoration: none;">me</a>
-  </div>
-</div>
+### Task 1: Symmetric Encryption and Decryption using AES-256-CBC
+**Objective:** In this task, we (me and [Syed](https://github.com/yed-0)) will simulate how to send a confidential message securely using symmetric encryption. We’ll use the AES-256-CBC encryption algorithm in OpenSSL to encrypt and decrypt a message.
 
 ---
-
-
-#### 🔍 Step 1: Research how to generate a strong, random key using `OpenSSL`.
+#### Step 1: Research how to generate a strong, random key using `OpenSSL`.
 
 **Command for create [key](Assets/Task-1/key):**
 ```bash
@@ -65,17 +55,19 @@ openssl rand -hex 16 > iv
 └─$ cat iv
 bac6130b2c33397a5afbf851cfd0acb9
 ```
-
+<details>
+<summary><b>Explanation:</b></summary>
 
 **Based on our discussion**, here’s a breakdown of the research process for generating a strong, random key using OpenSSL for AES-256-CBC encryption. Keeping it short and to the point.
 - `openssl rand` command generates cryptographically secure random data.
 - For AES-256, a 32-byte key is needed. `openssl rand -hex 32` outputs 64 hex characters (32 bytes).
 - For CBC mode, a 16-byte IV is required. `openssl rand -hex 16` outputs 32 hex characters (16 bytes).
 - Hex format is **compatible** with OpenSSL’s `-K` and `-iv` options for direct key/IV input.
+</details>
 
 ---
-#### ✉️ Step 2: Create a Message to Encrypt
-Here syed create a message to encrypt.
+#### Step 2: Create a Message to Encrypt
+> Here syed create a message to encrypt.
 
 **Command for create a message:**
 ```bash
@@ -89,26 +81,47 @@ echo "isi message sini syed" > syed.txt
 ```
 
 ---
-#### 🔐 Step 3: Encrypt the Message Using AES-256-CBC
-Next, Syed encrypted the message using AES-256-CBC with the key and IV.
+#### Step 3: Encrypt the Message Using AES-256-CBC
+> Next, Syed encrypted the message using AES-256-CBC with the key and IV.
 
 **The OpenSSL command is:**
 ```bash
 openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename -out filename.enc
 ```
+<details>
+<summary><b>Command Breakdown:</b></summary>
 
+- **`enc`**: Specifies the OpenSSL command for symmetric encryption/decryption.
+- **`-e`**: Enables encryption mode to convert plaintext to ciphertext.
+- **`-aes-256-cbc`**: Uses AES-256 algorithm in Cipher Block Chaining (CBC) mode for secure encryption.
+- **`-K $(cat key)`**: Provides the 256-bit encryption key from the `key` file in hexadecimal format.
+- **`-iv $(cat iv)`**: Supplies the 128-bit initialization vector (IV) from the `iv` file for CBC mode.
+- **`-in filename`**: Specifies the input file (plaintext) to be encrypted.
+- **`-out filename.enc`**: Defines the output file for the encrypted ciphertext.
+</details>
+
+---
 **Result:**
 ```bash
 ┌──(syed㉿NWS23010037)-[~]
 └─$ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in syed.txt -out syed.txt.enc
 ```
 
-#### 🔓 Step 4: Decrypt the Message
+#### Step 4: Decrypt the Message
 **The OpenSSL command is:**
 ```bash
 openssl enc -d -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename.enc -out filename.decrypt
 ```
 
+<details>
+<summary><b>Command Breakdown:</b></summary>
+
+- `-d`: Enables decryption mode to convert ciphertext to plaintext.
+- `-in filename.enc`: Specifies the input file (encrypted ciphertext) to be decrypted.
+- `-out filename.decrypt`: Defines the output file for the decrypted plaintext.
+</details>
+
+---
 **Result:**
 ```bash
 ┌──(adamriezqie㉿NWS23010043)-[~/Downloads]
@@ -120,7 +133,7 @@ kelisa putih nampak rare
 ```
 
 
-#### ✅ Step 5: Verify the Decrypted Message
+#### Step 5: Verify the Decrypted Message
 **Command:**
 ```bash
 ll filename.txt filename.decrypt
@@ -140,7 +153,7 @@ diff filename filename.decrypt
 ┌──(syed㉿NWS23010037)-[~]                                      
 └─$ 
 ```
-
+> *As you can see, both files (`syed.txt` and `syed.decrypt`) have the same size (25 bytes). The `diff` command produces no output, indicating that the files are identical, confirming successful decryption.*
 
 
 ---
@@ -154,6 +167,16 @@ diff filename filename.decrypt
 openssl genpkey -algorithm RSA -out filename -pkeyopt rsa_keygen_bits:2048
 ```
 
+<details>
+<summary><b>Command Breakdown:</b></summary>
+
+- `genpkey`: Specifies the OpenSSL command for generating private keys.
+- `-algorithm RSA`: Selects the RSA algorithm for key generation.
+- `-out filename`: Defines the output file where the private key will be saved.
+- `-pkeyopt rsa_keygen_bits:2048`: Sets the RSA key size to 2048 bits for secure encryption.
+</details>
+
+---
 **Result:**
 ```bash
 ┌──(syed㉿NWS23010037)-[~]
@@ -435,4 +458,8 @@ Verification failure
 ```
 
 ---
+
+### Problem Analysis
+- We encaouter an error during encrypt using AES becaause of using base64. Then we googling and find the solution to use hex. 
+- We encounter a technial error because of missing file such as `agreement.txt` during verify. Then we just call back the file.
 
