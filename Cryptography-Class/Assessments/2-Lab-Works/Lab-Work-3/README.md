@@ -83,8 +83,10 @@ echo "isi message sini syed" > syed.txt
 ```
 
 **Result:**
-- letak kat sini copy from terminal
-- dengan screenshot
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ echo "kelisa putih nampak rare" > "syed.txt"
+```
 
 ---
 #### Step 3: Encrypt the Message Using AES-256-CBC
@@ -92,16 +94,35 @@ Next, Syed encrypted the message using AES-256-CBC with the key and IV.
 
 **The OpenSSL command is:**
 ```bash
-openssl enc -aes-256-cbc -K $(cat aes.key) -iv $(cat aes.iv) -in syed.txt -out syed.txt.enc
+openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename -out filename.enc
 ```
 
 **Result:**
-- letak kat sini copy from terminal
-- dengan screenshot
-
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl enc -e -aes-256-cbc -K $(cat key) -iv $(cat iv) -in syed.txt -out syed.txt.enc
+```
 
 #### Step 4: Decrypt the Message
+**The OpenSSL command is:**
+```bash
+openssl enc -d -aes-256-cbc -K $(cat key) -iv $(cat iv) -in filename.enc -out filename.decrypt
+```
+
+**Result:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads]
+└─$ openssl enc -d -aes-256-cbc -K $(cat key) -iv $(cat iv) -in syed.txt.enc -out syed.decrypt
+
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads]
+└─$ cat syed.decrypt
+kelisa putih nampak rare
+```
+
+
 #### Step 5: Verify the Decrypted Message
+
+
 
 ---
 
