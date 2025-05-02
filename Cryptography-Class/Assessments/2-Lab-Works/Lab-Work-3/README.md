@@ -292,11 +292,76 @@ hi syed, long time no see... here secret message for you :143
 
 ### Task 3: Hashing and Message Integrity using SHA-256
 
-#### Step 1: Create a text file (e.g., `<Your Name>.txt`) with some content.
-#### Step 2: Research how to generate the SHA-256 hash of the document using `openssl`.
-#### Step 3: Simulate a modification to the `<Your Name>.txt` file (e.g., change a single character).
-#### Step 4: Generate the SHA-256 hash of the modified document using the same tool.
-#### Step 5: Compare the two hash values and observe the difference. Explain what this demonstrates about
+#### Step 1: Create a sample file
+**command:**
+```bash
+echo "anything" > filename
+```
+
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ echo "27/6/2025 12.A.M lobby" > info.txt
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ cat info.txt 
+27/6/2025 12.A.M lobby
+```
+
+#### Step 2: Generate SHA-256 hash
+**command:**
+```bash
+openssl dgst -sha256 filename
+```
+
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl dgst -sha256 info.txt 
+SHA2-256(info.txt)= 6cca854084069003bec800a1dd1b07cf54f8da311f3db783afa095ab03693d45
+```
+
+#### Step 3: Modify the file slightly
+**command:**
+```bash
+echo "anything" >> filename
+```
+
+
+**Result:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-3]
+└─$ cat info.txt                 
+27/6/2025 12.A.M lobby
+                                                                                                                              
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-3]
+└─$ echo "\n\n\nHope syed did not see this comming" >> info.txt                      
+                                                                                                                              
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-3]
+└─$ cat info.txt 
+27/6/2025 12.A.M lobby
+
+
+
+Hope syed did not see this comming
+```
+
+#### Step 4: Regenerate the hash and check it
+**command:**
+```bash
+openssl dgst -sha256 filename
+```
+
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]                                                                                          
+└─$ openssl dgst -sha256 info1.txt
+SHA2-256(info1.txt)= 8c012278b413e1d1c18536553d8784f7436b0996b9b6b1fb95f50acae8d42556                               
+                                                                                                                    
+┌──(syed㉿NWS23010037)-[~]                                                                                          
+└─$ openssl dgst -sha256 info.txt 
+SHA2-256(info.txt)= 6cca854084069003bec800a1dd1b07cf54f8da311f3db783afa095ab03693d45
+```
 
 ---
 
