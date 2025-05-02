@@ -148,9 +148,69 @@ diff filename filename.decrypt
 
 ### Task 2: Asymmetric Encryption and Decryption using RSA
 
-#### Step 1: Research how to generate an RSA private key of at least 2048 bits using `OpenSSL`.
-#### Step 2: Research how to extract the corresponding public key from the private key using `OpenSSL`.
-#### Step 3: Labu (simulated by you) encrypts a message (save it in `rahsia.txt`) using Labi's public key with `OpenSSL`.
+#### Step 1: Generate an RSA private key (2048-bit)
+
+**Command:**
+```bash
+openssl genpkey -algorithm RSA -out filename -pkeyopt rsa_keygen_bits:2048
+```
+
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]
+└─$ openssl genpkey -algorithm RSA -out private.key  -pkeyopt rsa_keygen_bits:2048
+..+..+....+.........+............+++++++++++++++++++++++++++++++++++++++*........+.......+...........+.......+...+..+.......+++++++++++++++++++++++++++++++++++++++*..+..........+.........+...........+.......+..+.........+.......+...+...............+..+............+.+......+....................+........................+.+...+..+...+...+...+.+...+...+...............+..+.....................+.+......+..+.+.........+....................+.+....................+...............+.......+..++++++                                                                                        
+.+.+++++++++++++++++++++++++++++++++++++++*..........+..+.+..+...+.......+++++++++++++++++++++++++++++++++++++++*.......................+..+............+..................+.++++++                                                                         
+```
+
+
+#### Step 2: Extract the public key
+
+**Command:**
+```bash
+ openssl rsa -in filename -pubout -out filename
+```
+
+**Result:**
+```bash
+┌──(syed㉿NWS23010037)-[~]                                                                                          
+└─$ openssl rsa -in private.key -pubout -out public.key                                                             
+writing RSA key
+
+┌──(syed㉿NWS23010037)-[~]
+└─$ cat public.key
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApqLrQQPcgM6Py2DMgtw8
+1Kwh43yPHuFuPG5V7Z9TCQz3ZN/8m1gOnoDL+8BfM2bm5pZKBQfT9fV7FnZ3oMtk
+MlQoc1ufp8uBRSlF2FWjGJP6VnJ1VdVAdj/iGFweoCfzV/oyKAjnk7FzmLHVjIqM
+yMb1aQp9YUEG+vMdlvLajoPgW+LCqSIC9LVw5KlokaciZyV6LIsvN+q1ue+JDcsj
+HOIokZrO9ZY/LqxMjfTMkN+uMZKOwyRXwqQSdQAYdsrw2yKBeeKvgg6S/GYNAwOE
+/Nw6djCwgGFinVgQnl465TqynT+GGNBD7C0b46S/1ddEoRuomphkto4+CxWNEoXD
+6wIDAQAB
+-----END PUBLIC KEY-----
+```
+
+
+#### Step 3: Encrypt a message using the public key`OpenSSL`.
+
+**First, generate the secret message:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ echo "hi syed, long time no see... here secret message for you :143" > secret.txt
+```
+
+**Encrypt a message:**
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ openssl pkeyutl -encrypt -inkey public.key -pubin -in secret.txt -out secret.enc
+
+┌──(adamriezqie㉿NWS23010043)-[~/Downloads/task-2]
+└─$ cat secret.enc  
+�HV▒$�$
+       0���f�7,b�����6�U��g����wz4��������▒���[��{r��"�.�~���A��㛌�ᠮ{�k2J��o�E��=1N�{�x'��+[UN�����*���&I���#;3�6����|Y���J6�\$}E�~N���{4C5NaJsT�s�����-SF#���Jj��&�ZF��n;�5}����ܗ�Ma&o+��&�_H���.�
+                         I��nڇ�#*��ī�!�S����r�I���<   
+```
+
 #### Step 4: Labi (simulated by you) decrypts the ciphertext using his private key with `OpenSSL`.
 #### Step 5: Verify that the decrypted message matches the original secret message.
 
