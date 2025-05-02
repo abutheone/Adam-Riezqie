@@ -48,7 +48,7 @@ openssl rand -hex 32 > key
 
 **Command for create iv:**
 ```bash
-openssl rand -hex 16 > iv.txt
+openssl rand -hex 16 > iv
 ```
 **Result:**
 - letak kat sini copy from terminal
