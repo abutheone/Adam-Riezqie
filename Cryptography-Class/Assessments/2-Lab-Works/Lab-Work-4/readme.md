@@ -258,6 +258,209 @@ $
 
 ---
 
+#### Step 1: Implement RSA encryption and decryption in python.
+
+You can check out the full source code here:
+📄 [rsa_encryption.py](src/closeSSL/modules/rsa_encryption.py).
+> In this section, we will break it down and explain it part by part.
+---
+
+**🧠 Main Function:**
+
+```py
+if __name__ == "__main__":
+    rsa_main()
+```
+- `rsa_main()`: The main function that runs the RSA encryption tool interface via the command-line.
+
+---
+
+**🔑 Key Generation:**
+
+```python
+def generate_rsa_keys():
+    key = RSA.generate(2048)
+    private_key = key.export_key()
+    public_key = key.publickey().export_key()
+
+    print("[+] Private Key:\n", private_key.decode())
+    priv_path = input_path("Save as [private key]: ")
+    save_to_file(private_key, priv_path, binary=True)
+
+    print("[+] Public Key:\n", public_key.decode())
+    pub_path = input_path("Save as [public key]: ")
+    save_to_file(public_key, pub_path, binary=True)
+```
+- RSA.generate(2048): Generates a new RSA key pair with a key size of 2048 bits. This key pair includes a public and private key.
+- .export_key(): Exports the generated RSA key in a format suitable for storage or transmission.
+- input_path(): Prompts the user to input a file path where the keys should be saved, using the prompt_toolkit library for improved input handling and file completion.
+- save_to_file(): Saves the generated keys to the specified path on the system. The keys are stored in binary format.
+
+---
+
+**🔐 Encryption Logic:**
+```python
+def encrypt_file_rsa(pub_key_path, in_path, out_path):
+    with open(pub_key_path, "rb") as f:
+        pub_key = RSA.import_key(f.read())
+    cipher = PKCS1_OAEP.new(pub_key)
+    with open(in_path, "rb") as f:
+        plaintext = f.read()
+    ciphertext = cipher.encrypt(plaintext)
+    save_to_file(ciphertext, out_path, binary=True)
+```
+- RSA.import_key(): Imports the public key from a file. This key is used to perform the encryption.
+- PKCS1_OAEP.new(pub_key): Initializes a cipher using the public key and the OAEP (Optimal Asymmetric Encryption Padding) scheme, which provides enhanced security over traditional RSA padding schemes.
+- cipher.encrypt(plaintext): Encrypts the plaintext using the RSA public key. The data is transformed into ciphertext that can only be decrypted with the corresponding private key.
+- save_to_file(): Saves the encrypted ciphertext to the specified output file.
+
+---
+
+**🔓 Decryption Logic:**
+```python
+def decrypt_file_rsa(priv_key_path, in_path, out_path):
+    with open(priv_key_path, "rb") as f:
+        priv_key = RSA.import_key(f.read())
+    cipher = PKCS1_OAEP.new(priv_key)
+    with open(in_path, "rb") as f:
+        ciphertext = f.read()
+    plaintext = cipher.decrypt(ciphertext)
+    save_to_file(plaintext, out_path, binary=True)
+```
+
+- RSA.import_key(): Imports the private key from a file. This key is used to perform the decryption.
+- PKCS1_OAEP.new(priv_key): Initializes a cipher using the private key and the OAEP scheme for decryption.
+- cipher.decrypt(ciphertext): Decrypts the ciphertext using the RSA private key, recovering the original plaintext.
+- save_to_file(): Saves the decrypted plaintext to the specified output file.
+
+---
+
+**💾 File Saving and Input Handling:**
+```python
+def save_to_file(data, path, binary=False):
+    mode = "wb" if binary else "w"
+    if os.path.exists(path):
+        confirm = input(f"[!] File {path} exists. Overwrite? (y/n): ")
+        if confirm.lower() != 'y':
+            print("[-] Operation cancelled.")
+            return False
+    with open(path, mode) as f:
+        f.write(data)
+    print(f"[+] Saved to {path}")
+    return True
+```
+- save_to_file(): This function handles saving both binary and text data to a file. It ensures that the user is prompted if the file already exists and asks for confirmation to overwrite.
+- input_path(): Prompts the user to enter a file path, with path completion support for easier navigation.
+
+---
+
+#### Step 2: Generate an RSA key pair (public and private keys).
+
+1. Run the script:
+```bash
+python3 rsa_encryption.py
+```
+---
+2. Enter option `3` for generate RSA keys:
+
+```
+==================== [Disclaimer: This tools for RSA 2048 bits] ======================
+
+1. Encryption
+2. Decryption
+3. Generate RSA Keys
+q. Exit
+Select option: 3
+```
+
+---
+
+3. Save private key by enter file name:
+   
+```
+[+] Private Key:
+ -----BEGIN RSA PRIVATE KEY-----
+...
+...
+...
+-----END RSA PRIVATE KEY-----
+Save as [private key]: /home/kali/rsa.key
+[+] Saved to /home/kali/rsa.key
+```
+
+---
+
+4. save public key by enter file name:
+
+```
+[+] Public Key:
+ -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo4KeF8TVCx+Wo0Cn0W8e
+NMkMA/Eor9vVEcruH7vQnrAO47V6imGOcsJn4ulPTbKrEB8dnprwic+zZJ5P4Ijx
+mQrlgjtMGcB0+sEDbaEHLOMdQf6PsRX3fhgF/pYkLEv/tXO1sxzmW1pv6/R0Z7TC
+VJwb+3Js4MdHe425qzb2GfOesQDr6o9jWRasxXsPfFjAA1XnMIzgeCCQI0HBd15q
+lwUtg71yuOWM4qhi8rfKGBd5ULLxywxP/PqeFiZQcBO0wK1jOqfg7a19dX9e0nPh
+G/FVcMa43UI13xO1fgCLEEkOTXLBBgmlIE7n6s91gYfG/9IUlofcwE0d6i9T6XHO
+XQIDAQAB
+-----END PUBLIC KEY-----
+Save as [public key]: /home/kali/rsa.pub
+[+] Saved to /home/kali/rsa.pub
+```
+
+---
+
+#### Step 3: Encrypt a short message using the public key.
+
+1. Enter a public key, and message file to be encrypt:
+```
+Enter public key file path: /home/kali/rsa.pub
+Enter file path to encrypt: /home/kali/rsa-message.txt
+Save as: /home/kali/rsa-message.enc
+[+] Saved to /home/kali/rsa-message.enc
+Press Enter to return to menu...
+```
+---
+
+2. Veify:
+```
+$ cat rsa-message.txt
+Hi syed, looks like this even better
+
+$ cat rsa-message.enc
+Q����
+     <dk'��^��tl�j��
+                    =�9L�r�w�CP�?)�i,H�u�`�
+�� 1Q��u��p�)}*�u���=xi�
+X�����P�*^V�x�WN�/c�����        ��%ȢCF��a3�w����Xl��~%�s|��H�   ��@��.��f'�␦��q?�d��dg�J&k�u�D�4���*   &�˨\EN0)%
+        L��޽
+            �
+             U����P(XG
+```
+---
+
+#### Task 4: Decrypt it using the private key.
+
+1. Enter a private key, and message file to be decrypt:
+```
+Select option: 2
+Enter private key file path: /home/kali/rsa.key
+Enter file path to decrypt: /home/kali/rsa-message.enc
+Save as: /home/kali/rsa-message.dec
+[+] Saved to /home/kali/rsa-message.dec
+Press Enter to return to menu...
+```
+---
+
+2. Veify:
+```
+$ cat rsa-message.txt
+Hi syed, looks like this even better
+
+$ cat rsa-message.dec
+Hi syed, looks like this even better
+```
+---
+
 ### Task 3: Hashing (SHA-256)
 
 ---
@@ -351,7 +554,7 @@ print(tabulate(result_table, headers=["Filename", "SHA-256 Hash"], tablefmt="gri
 
 ---
 
-#### Step 1: hashing outputs for different inputs.
+#### Step 2: hashing outputs for different inputs.
 
 1. Run the script:
 ```bash
@@ -383,6 +586,28 @@ SHA-256 Hash Results:
 > Notice that the hash values for `aes-message.txt` and `aes-message.dec` are identical, confirming that the decrypted file matches the original. However, the hash for `aes-message.enc` is different, as expected, since it represents the encrypted content.
 
 ### Task 4: Digital Signatures (RSA)
+
+#### Step 1: Sign A message usign RSA private key:
+
+Enter a private key and file to sign. Then save the file:
+```
+Enter key file path (private key): /home/kali/rsa.key
+Enter file path to sign: /home/kali/task_4.txt
+Save as (signed): /home/kali/task_4.sign
+[+] File signed successfully.
+```
+---
+
+#### Step 2: Verify the signature using the corresponding public key.
+
+Enter a public key and file to verify. Then enter a sign file:
+```
+Enter key file path (public): /home/kali/rsa.pub
+Enter file path to verify: /home/kali/task_4.txt
+Enter signature file path: /home/kali/task_4.sign
+[✓] Signature is valid.
+Press Enter to return to menu...
+```
 
 ---
 
