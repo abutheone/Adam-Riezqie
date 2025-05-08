@@ -351,6 +351,37 @@ print(tabulate(result_table, headers=["Filename", "SHA-256 Hash"], tablefmt="gri
 
 ---
 
+#### Step 1: hashing outputs for different inputs.
+
+1. Run the script:
+```bash
+python3 sha_hashing.py
+```
+
+2. Choose option `1` for hashing:
+```
+Select option: 1
+[*] Enter file paths one by one. Press Enter without input to finish.
+File path: /home/kali/aes-message.txt
+File path: /home/kali/aes-message.enc
+File path: /home/kali/aes-message.dec
+File path:
+```
+**Output:**
+```
+SHA-256 Hash Results:
++-----------------+------------------------------------------------------------------+
+| Filename        | SHA-256 Hash                                                     |
++=================+==================================================================+
+| aes-message.txt | 610d7cc4dd40abeedd4137fa854bcd3b5a49f03aed89611c08eb33038ccef62d |
++-----------------+------------------------------------------------------------------+
+| aes-message.enc | a626c1c274647b6ee85d1fa5049c5662eb36f2d8803ab022863be7a7c072c195 |
++-----------------+------------------------------------------------------------------+
+| aes-message.dec | 610d7cc4dd40abeedd4137fa854bcd3b5a49f03aed89611c08eb33038ccef62d |
++-----------------+------------------------------------------------------------------+
+```
+> Notice that the hash values for `aes-message.txt` and `aes-message.dec` are identical, confirming that the decrypted file matches the original. However, the hash for `aes-message.enc` is different, as expected, since it represents the encrypted content.
+
 ### Task 4: Digital Signatures (RSA)
 
 ---
