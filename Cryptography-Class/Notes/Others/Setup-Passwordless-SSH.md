@@ -1,11 +1,3 @@
-## SSH From Laptop Windows to VM Kali Linux
----
-1. **On your Windows Laptop, use PowerShell or CMD:**
-```bash
-ssh kali_user@<Kali_VM_IP>
-```
-
-
 ## Setup Passwordless SSH (from Windows → Kali)
 ---
 1. **On Windows, generate SSH keys:**
