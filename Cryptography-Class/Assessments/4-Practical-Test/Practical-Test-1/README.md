@@ -361,8 +361,8 @@ Jverex Av Jfrcre Ez Brre
 
 - ![alt text](src/Task-5/image-1.png)
 
+---
 - Also, I write a python script to add `\n` and find the same hash on wordlists just like how john the ripper work.
-
 
 ```bash
 ┌──(adamriezqie㉿NWS23010043)-[~/…/4-Practical-Test/Practical-Test-1/src/Task-5]
@@ -371,6 +371,29 @@ Jverex Av Jfrcre Ez Brre
 Plaintext: 'Assalamualaikum Semua\n'
 MD5: 6283293831c84671546324c9373704ca
 ```
+
+---
+**UPDATE-HASH: 7b77ca1e2b3e7228a82ecbc7ca0e6b52**
+
+Simply use John for this.
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/…/4-Practical-Test/Practical-Test-1/src/Task-5]
+└─$ echo "7b77ca1e2b3e7228a82ecbc7ca0e6b52" > hash-2.txt
+
+┌──(adamriezqie㉿NWS23010043)-[~/…/4-Practical-Test/Practical-Test-1/src/Task-5]
+└─$ john --format=Raw-MD5 --wordlist=wordlist.txt hash-2.txt
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-MD5 [MD5 256/256 AVX2 8x3])
+Warning: no OpenMP support for this hash type, consider --fork=6
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Warning: Only 20 candidates left, minimum 24 needed for performance.
+Assalamualaikum Semua (?)
+1g 0:00:00:00 DONE (2025-05-16 21:39) 100.0g/s 2000p/s 2000c/s 2000C/s Bismillah..InsyaAllah
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed.
+```
+
+- Plaintext: `Assalamualaikum Semua`
 
 ---
 ### Hash 3:
@@ -383,3 +406,31 @@ Same like previous question, I create a custom script:
 Plaintext: 'Begitulah Lumrah Kehidupan\n'
 SHA-256: 2bc92f33a2ede5ada3d65b468a81f617d0229d843d87c63313833e509e5a6782
 ```
+
+---
+**UPDATE-HASH: e583cee9ab9d7626c970fd6e9938fcb2d06fbbd12f1c1a3c6902a215808c825c**
+
+simply use john and there you goooo:
+```bash
+┌──(adamriezqie㉿NWS23010043)-[~/…/4-Practical-Test/Practical-Test-1/src/Task-5]
+└─$ echo "e583cee9ab9d7626c970fd6e9938fcb2d06fbbd12f1c1a3c6902a215808c825c" > hash-3.txt
+
+┌──(adamriezqie㉿NWS23010043)-[~/…/4-Practical-Test/Practical-Test-1/src/Task-5]
+└─$ john --format=raw-sha256 --wordlist=wordlist.txt hash-3.txt
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA256 [SHA256 256/256 AVX2 8x])
+Warning: poor OpenMP scalability for this hash type, consider --fork=6
+Will run 6 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Warning: Only 20 candidates left, minimum 48 needed for performance.
+Begitulah Lumrah Kehidupan (?)
+1g 0:00:00:00 DONE (2025-05-16 21:48) 50.00g/s 1000p/s 1000c/s 1000C/s Bismillah..InsyaAllah
+Use the "--show --format=Raw-SHA256" options to display all of the cracked passwords reliably
+Session completed.
+```
+- Plaintext: `Begitulah Lumrah Kehidupan`
+
+
+
+---
+x
