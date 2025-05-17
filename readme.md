@@ -17,5 +17,5 @@ This repo (may 🤞) includes:
 - [Lab 4: Implementing Cryptography with Python](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-4/README.md)
 
 ## Practical Test
-[Practical Test 1: GPG Encryption, Passwordless SSH and Crack Hashing](Cryptography-Class/Assessments/4-Practical-Test/Practical-Test-1/README.md)
+- [Practical Test 1: GPG Encryption, Passwordless SSH and Crack Hashing](Cryptography-Class/Assessments/4-Practical-Test/Practical-Test-1/README.md)
 
