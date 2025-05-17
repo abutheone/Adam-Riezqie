@@ -14,12 +14,8 @@ This repo (may 🤞) includes:
 - [Lab 1: Cryptographic Attacks: Brute Force and Traffic Analysis on Network Protocols](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-1/readme.md)
 - [Lab 2: Cryptographic Attacks: Cracking Weak Password Hashes and Exploiting Poor Authentication in Databases](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-2/readme.md)
 - [Lab 3: Hands-on Exploration of Cryptographic Tools: Hashing, Encryption, and Digital Signatures](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-3/README.md)
+- [Lab 4: Implementing Cryptography with Python](Cryptography-Class/Assessments/2-Lab-Works/Lab-Work-4/README.md)
 
-## Notes
-- [Module 1 - Cryptography Concepts and Fundamental](Cryptography-Class/Notes/Module%201%20-%20Cryptography%20Concepts%20and%20Fundamental.md)
-- [Module 2 - Substitution techniques (classical encryption techniques)](Cryptography-Class/Notes/Module%202%20-%20Substitution%20techniques%20(classical%20encryption%20techniques).md)
-- [Module 3 - Transposition Techniques (classical encryption techniques)](Cryptography-Class/Notes/Module%203%20-%20Transposition%20Techniques%20(classical%20encryption%20techniques).md)
-- [Module 4 - Symmetric Cryptography](Cryptography-Class/Notes/Module%204%20-%20Symmetric%20Cryptography.md)
-- [Module 5 - Asymmetric Cryptography](Cryptography-Class/Notes/Module%205%20-%20Asymmetric%20Cryptography.md)
-- [Module 6 - Cryptographic Protocol](Cryptography-Class/Notes/Module%206%20-%20Cryptographic%20Protocol.md)
+## Practical Test
+[Practical Test 1: GPG Encryption, Passwordless SSH and Crack Hashing](Cryptography-Class/Assessments/4-Practical-Test/Practical-Test-1/README.md)
 
